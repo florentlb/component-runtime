@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talend Component Kit Developer Reference Guide :: Component definition</title>
-    <link rel="canonical" href="https://talend.github.io/component-runtime/main/1.0.4/component-definition.html">
+    <title>Talend Component Kit Developer Guide :: Defining a component execution logic</title>
+    <link rel="canonical" href="http://localhost:8080/main/1.0.4/component-definition.html">
     <meta name="generator" content="Talend Component Kit Generator">
-<meta name="date" content="2018-07-26T09:45:53.389Z" scheme="YYYY-MM-DDTHH:mm:ss.sssZ">
+<meta name="date" content="2018-08-02T07:48:43.193Z" scheme="YYYY-MM-DDTHH:mm:ss.sssZ">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/2.8.0/instantsearch.min.css" integrity="sha256-vusmcqkVvKdkwoueSJZLlO9y2P+Lp9fN3WwQUV9Uwfw=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/2.8.0/instantsearch-theme-algolia.min.css" integrity="sha256-ZqsS4QagZnfArbOyheCO4qVjzzsMbg/WMvf5tLtId/Q=" crossorigin="anonymous" />
@@ -15,8 +15,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@talend/bootstrap-theme@0.200.1/dist/bootstrap.css">
 <link rel="stylesheet" href="../../_/css/talend.css">
 <link rel="shortcut icon" href="../../_/images/favicon_0.ico" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PSBN"></script>
-    <script>dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','GTM-PSBN')</script>
   </head>
   <body>
       <header class="global-header">
@@ -37,54 +35,6 @@
             <ul class="dropdown-menu">
               <li class="navbar-item version is-current is-latest">
                 <a href="index.html">1.0.4</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../1.0.3/index.html">1.0.3</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../1.0.2/index.html">1.0.2</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../1.0.1/index.html">1.0.1</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../1.0.0/index.html">1.0.0</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.12/index.html">0.0.12</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.11/index.html">0.0.11</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.10/index.html">0.0.10</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.9/index.html">0.0.9</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.8/index.html">0.0.8</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.7/index.html">0.0.7</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.6/index.html">0.0.6</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.5/index.html">0.0.5</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.4/index.html">0.0.4</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.3/index.html">0.0.3</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.2/index.html">0.0.2</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.1/index.html">0.0.1</a>
               </li>
             </ul>
           </li>
@@ -118,6 +68,10 @@
               <div class="navigation-container grey-background hidden-xs col-sm-2" data-component="main" data-version="1.0.4">
   <aside class="navigation" role="navigation">
     <div class="panels">
+      <div class="input-group nav-filter-group">
+        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        <input class="form-control" type="text" placeholder="Filter menu entries..." id="navFilterInput">
+      </div>
       <div class="navigation-menu is-active" data-panel="menu">
         <nav class="nav-menu">
           <!-- <label>Talend Component Kit Developer Reference Guide</label> -->
@@ -165,25 +119,28 @@
       <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Creating components</span></label>
     <ul class="nav nav-list tree"  style="display:none">
   <li data-depth="2">
+    <a class="menu-link" href="component-registering.html">Registering a component</a>
+  </li>
+  <li data-depth="2">
     <a class="menu-link" href="component-definition.html">Defining a component</a>
   </li>
   <li data-depth="2">
     <a class="menu-link" href="component-configuration.html">Configuring a component</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="component-registering.html">Registering a component</a>
-  </li>
-  <li data-depth="2">
     <a class="menu-link" href="component-internationalization.html">Internationalizing a component</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="component-loading.html">Loading a component</a>
+    <a class="menu-link" href="component-versions-and-migration.html">Managing component versions</a>
   </li>
   <li data-depth="2">
     <a class="menu-link" href="tutorial-configuration-sensitive-data.html">Masking sensitive data</a>
   </li>
   <li data-depth="2">
     <a class="menu-link" href="best-practices.html">Best practices</a>
+  </li>
+  <li data-depth="2">
+    <a class="menu-link" href="component-loading.html">Loading a component</a>
   </li>
   <li data-depth="2">
     <a class="menu-link" href="index-sub-build-tools.html">Build tools</a>
@@ -345,9 +302,20 @@
                 <article class="doc">
         <div class="row">
           <div class="col-sm-9 row">
-              <h1>Component definition</h1>
+              <h1>Defining a component execution logic</h1>
             <div class="article-content">
               <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each type of component has its own execution logic. The same basic logic is applied to all components of the same type, and is then extended to implement each component specificities.</p>
+</div>
+<div class="paragraph">
+<p>The project generated from the starter already contains the basic logic for each component.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_general_component_execution_logic"><a class="anchor" href="#_general_component_execution_logic"></a>General component execution logic</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Talend Component Kit framework relies on several primitive components.</p>
@@ -380,7 +348,7 @@ In distributed environments, class constructor are called on cluster manager nod
 All instances are then serialized and sent to the worker node.</p>
 </li>
 <li>
-<p>Serialized instances are received and deserialized. Methods annotated with <code>@PostConstruct</code> are called. After that, pipeline execution starts. The @BeforeGroup annotated method of the processor is called before processing the first element in chunk.<br>
+<p>Serialized instances are received and deserialized. Methods annotated with <code>@PostConstruct</code> are called. After that, pipeline execution starts. The <code>@BeforeGroup</code> annotated method of the processor is called before processing the first element in chunk.<br>
 After processing the number of records estimated as chunk size, the <code>@AfterGroup</code> annotated method of the processor is called. Chunk size is calculated depending on the environment the pipeline is processed by. Once the pipeline is processed, methods annotated with <code>@PreDestroy</code> are called.</p>
 </li>
 </ol>
@@ -418,8 +386,21 @@ The framework is designed to be as declarative as possible but also to stay exte
 </div>
 </div>
 <div class="sect1">
-<h2 id="partition-mapper"><a class="anchor" href="#partition-mapper"></a>PartitionMapper</h2>
+<h2 id="_defining_an_input_component"><a class="anchor" href="#_defining_an_input_component"></a>Defining an input component</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Input components are the components generally placed at the beginning of a Talend job. They are in charge of retrieving the data that will later be processed in the job.</p>
+</div>
+<div class="paragraph">
+<p>An input component is primarily made of three distinct logics:
+- The execution logic of the component itself, defined through a partition mapper.
+- The configurable part of the component, defined through the mapper configuration.
+- The source logic defined through a producer.</p>
+</div>
+<div class="sect2">
+<h3 id="_defining_a_partition_mapper"><a class="anchor" href="#_defining_a_partition_mapper"></a>Defining a partition Mapper</h3>
+<div class="sect3">
+<h4 id="partition-mapper"><a class="anchor" href="#partition-mapper"></a>What is a partition mapper</h4>
 <div class="paragraph">
 <p>A <code>PartitionMapper</code> is a component able to split itself to make the execution more efficient.</p>
 </div>
@@ -455,8 +436,9 @@ This kind of component must be <code>Serializable</code> to be distributable.
 </tr>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_definition"><a class="anchor" href="#_definition"></a>Definition</h3>
+</div>
+<div class="sect3">
+<h4 id="_implementing_a_partition_mapper"><a class="anchor" href="#_implementing_a_partition_mapper"></a>Implementing a partition mapper</h4>
 <div class="paragraph">
 <p>A partition mapper requires three methods marked with specific annotations:</p>
 </div>
@@ -473,8 +455,8 @@ This kind of component must be <code>Serializable</code> to be distributable.
 </li>
 </ol>
 </div>
-<div class="sect3">
-<h4 id="_assessor"><a class="anchor" href="#_assessor"></a>@Assessor</h4>
+<div class="sect4">
+<h5 id="_assessor"><a class="anchor" href="#_assessor"></a>@Assessor</h5>
 <div class="paragraph">
 <p>The Assessor method returns the estimated size of the data related to the component (depending its configuration).
 It must return a <code>Number</code> and must not take any parameter.</p>
@@ -491,8 +473,8 @@ public long estimateDataSetByteSize() {
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_split"><a class="anchor" href="#_split"></a>@Split</h4>
+<div class="sect4">
+<h5 id="_split"><a class="anchor" href="#_split"></a>@Split</h5>
 <div class="paragraph">
 <p>The Split method returns a collection of partition mappers and can take optionally a <code>@PartitionSize</code> long value as parameter, which is the requested size of the dataset per sub partition mapper.</p>
 </div>
@@ -508,8 +490,8 @@ public List&lt;MyMapper&gt; split(@PartitionSize final long desiredSize) {
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_emitter"><a class="anchor" href="#_emitter"></a>@Emitter</h4>
+<div class="sect4">
+<h5 id="_emitter"><a class="anchor" href="#_emitter"></a>@Emitter</h5>
 <div class="paragraph">
 <p>The Emitter method must not have any parameter and must return a producer. It uses the partition mapper configuration to instantiate and configure the producer.</p>
 </div>
@@ -527,15 +509,13 @@ public MyProducer create() {
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_producer"><a class="anchor" href="#_producer"></a>Producer</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_defining_the_producer_method"><a class="anchor" href="#_defining_the_producer_method"></a>Defining the producer method</h3>
 <div class="paragraph">
-<p>A <code>Producer</code> is a component interacting with a physical source. It produces input data for the processing flow.</p>
+<p>The <code>Producer</code> method defines the source logic of an input component. It handles the interaction with a physical source and produces input data for the processing flow.</p>
 </div>
 <div class="paragraph">
-<p>A producer is a simple component that must have a <code>@Producer</code> method without any parameter. It can return any data:</p>
+<p>A producer must have a <code>@Producer</code> method without any parameter. It is triggered by the <code>@Emitter</code> of the partition mapper and can return any data. It is defined in the <code>&lt;component_name&gt;Source.java</code> file:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -546,10 +526,43 @@ public MyData produces() {
 </div>
 </div>
 </div>
+<div class="sect2 relatedlinks">
+<h3 id="_related_articles"><a class="anchor" href="#_related_articles"></a>Related articles</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="tutorial-generate-project-using-starter.html" class="page">Generating a project using the starter</a></p>
+</li>
+<li>
+<p><a href="component-registering.html" class="page">Registering a component</a></p>
+</li>
+<li>
+<p><a href="component-configuration.html" class="page">Configuring a component</a></p>
+</li>
+<li>
+<p><a href="component-internationalization.html" class="page">Internationalizing a component</a></p>
+</li>
+<li>
+<p><a href="tutorial-configuration-sensitive-data.html" class="page">Masking sensitive data</a></p>
+</li>
+<li>
+<p><a href="best-practices.html" class="page">Best practices</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect1">
-<h2 id="component-type-processor"><a class="anchor" href="#component-type-processor"></a>Processor</h2>
+<h2 id="_defining_a_processor_or_an_output_component"><a class="anchor" href="#_defining_a_processor_or_an_output_component"></a>Defining a processor or an output component</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Processors and output components are the components in charge of reading, processing and transforming data in a Talend job, as well as passing it to its required destination.</p>
+</div>
+<div class="sect2">
+<h3 id="_defining_a_processor"><a class="anchor" href="#_defining_a_processor"></a>Defining a processor</h3>
+<div class="sect3">
+<h4 id="component-type-processor"><a class="anchor" href="#component-type-processor"></a>What is a processor</h4>
 <div class="paragraph">
 <p>A <code>Processor</code> is a component that converts incoming data to a different model.</p>
 </div>
@@ -634,13 +647,11 @@ public void endBatch() {
 </div>
 </div>
 <div class="paragraph">
-<p>You can optimize the data batch processing by using the <code>maxBatchSize</code> parameter. This parameter is automatically implemented on the component when it is deployed to a Talend application. Only the logic needs to be implemented. Learn how to implement chunking/bulking in <a href="#">tutorial-how-to-implement-bulking.adoc</a>.</p>
+<p>You can optimize the data batch processing by using the <code>maxBatchSize</code> parameter. This parameter is automatically implemented on the component when it is deployed to a Talend application. Only the logic needs to be implemented. Learn how to implement chunking/bulking in <a href="concept-processor-and-batch-processing.html" class="page">this document</a>.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_multiple_outputs"><a class="anchor" href="#_multiple_outputs"></a>Multiple outputs</h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="_defining_multiple_outputs"><a class="anchor" href="#_defining_multiple_outputs"></a>Defining multiple outputs</h4>
 <div class="paragraph">
 <p>In some cases, you may need to split the output of a processor in two. A common example is to have "main" and "reject" branches where part of the incoming data are passed to a specific bucket to be processed later.</p>
 </div>
@@ -685,10 +696,8 @@ public MyNewData map(final MyData data,
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_multiple_inputs"><a class="anchor" href="#_multiple_inputs"></a>Multiple inputs</h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="_defining_multiple_inputs"><a class="anchor" href="#_defining_multiple_inputs"></a>Defining multiple inputs</h4>
 <div class="paragraph">
 <p>Having multiple inputs is similar to having multiple outputs, except that an <code>OutputEmitter</code> wrapper is not needed:</p>
 </div>
@@ -704,10 +713,109 @@ public MyNewData map(@Input final MyData data, @Input("input2") final MyData2 da
 <p><code>@Input</code> takes the input name as parameter. If no name is set, it defaults to the "main (default)" input branch. It is recommended to use the default branch when possible and to avoid naming branches according to the component semantic.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_processor_components_and_batch_processing"><a class="anchor" href="#_processor_components_and_batch_processing"></a>Processor components and batch processing</h4>
+<div class="paragraph">
+<p>Depending on several requirements, including the system capacity and business needs, a processor can process records differently.</p>
 </div>
-<div class="sect1">
-<h2 id="_output"><a class="anchor" href="#_output"></a>Output</h2>
-<div class="sectionbody">
+<div class="paragraph">
+<p>For example, for real-time or near-real time processing, it is more interesting to process small batches of data more often. On the other hand, in case of one-time processing, it is more optimal to adapt the way the component handles batches of data according to the system capacity.</p>
+</div>
+<div class="paragraph">
+<p>By default, the runtime automatically estimates a group size that it considers good, according to the system capacity, to process the data. This group size can sometimes be too big and not optimal for your system to handle effectively and correctly.</p>
+</div>
+<div class="paragraph">
+<p>Users can then customize this size from the component settings in Talend Studio, by specifying a <code>maxBatchSize</code> that adapts the size of each group of data to be processed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The estimated group size logic is automatically implemented when a component is deployed to a Talend application. No action is required on the implementation side of the component.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The component batch processes the data as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Case 1 - No <code>maxBatchSize</code> is specified in the component configuration. The runtime estimates a group size of 4.
+image::processor-bulking-diagram-default.png[Bulking diagram]</p>
+</li>
+<li>
+<p>Case 2 - The runtime estimates a group size of 4 but a <code>maxBatchSize</code> of 3 is specified in the component configuration. The system adapts the group size to 3.
+image::processor-bulking-diagram-maxbatchsize.png[Bulking diagram]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each group is processed as follows until there is no record left:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>@BeforeGroup</code> method resets a record buffer at the beginning of each group.</p>
+</li>
+<li>
+<p>The records of the group are assessed one by one and placed in the buffer as follows: The @ElementListener method tests if the buffer size is greater or equal to the defined <code>maxBatchSize</code>. If it is, the records are processed. If not, then the current record is buffered.</p>
+</li>
+<li>
+<p>The previous step happens for all records of the group. Then the <code>@AfterGroup</code> method tests if the buffer is empty.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You can define the following logic in the processor configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.json.JsonObject;
+
+import org.talend.sdk.component.api.processor.AfterGroup;
+import org.talend.sdk.component.api.processor.BeforeGroup;
+import org.talend.sdk.component.api.processor.ElementListener;
+import org.talend.sdk.component.api.processor.Processor;
+
+@Processor(name = "BulkOutputDemo")
+public class BulkProcessor implements Serializable {
+    private Collection&lt;JsonObject&gt; buffer;
+
+    @BeforeGroup
+    public void begin() {
+        buffer = new ArrayList&lt;&gt;();
+    }
+
+    @ElementListener
+    public void bufferize(final JsonObject object) {
+        buffer.add(object);
+    }
+
+    @AfterGroup
+    public void commit() {
+        // save buffer records at once (bulk)
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can learn more about processors in <a href="#component-type-processor">this document</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_defining_an_output"><a class="anchor" href="#_defining_an_output"></a>Defining an output</h3>
+<div class="sect3">
+<h4 id="_what_is_an_output"><a class="anchor" href="#_what_is_an_output"></a>What is an output</h4>
 <div class="paragraph">
 <p>An <code>Output</code> is a <code>Processor</code> that does not return any data.</p>
 </div>
@@ -724,38 +832,45 @@ public void store(final MyData data) {
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_combiners"><a class="anchor" href="#_combiners"></a>Combiners</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_defining_a_combiner"><a class="anchor" href="#_defining_a_combiner"></a>Defining a combiner</h3>
+<div class="sect3">
+<h4 id="_what_is_a_combiner"><a class="anchor" href="#_what_is_a_combiner"></a>What is a combiner</h4>
 <div class="paragraph">
 <p>Currently, Talend Component Kit does not allow you to define a <code>Combiner</code>.
 A combiner is the symmetric part of a partition mapper and allows to aggregate results in a single partition.</p>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_family_and_component_icons"><a class="anchor" href="#_family_and_component_icons"></a>Family and component icons</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Every component family and component needs to have a representative icon.<br>
-You can use one of the icons provided by the framework or you can use a custom icon.</p>
-</div>
-<div class="paragraph">
-<p>For the component family the icon is defined in the <code>package-info.java</code> file. For the component itself, you need to declare it in the component class.</p>
-</div>
-<div class="paragraph">
-<p>To use a custom icon, you need to have the icon file placed in the <code>resources/icons</code> folder of the project.
-The icon file needs to have a name following the convention <code>IconName_icon32.png</code>, where you can replace <code>IconName</code> by the name of your choice.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Icon(value = Icon.IconType.CUSTOM, custom = "IconName")</code></pre>
+<div class="sect2 relatedlinks">
+<h3 id="_related_articles_2"><a class="anchor" href="#_related_articles_2"></a>Related articles</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="tutorial-generate-project-using-starter.html" class="page">Generating a project using the starter</a></p>
+</li>
+<li>
+<p><a href="component-registering.html" class="page">Registering a component</a></p>
+</li>
+<li>
+<p><a href="component-configuration.html" class="page">Configuring a component</a></p>
+</li>
+<li>
+<p><a href="component-internationalization.html" class="page">Internationalizing a component</a></p>
+</li>
+<li>
+<p><a href="tutorial-configuration-sensitive-data.html" class="page">Masking sensitive data</a></p>
+</li>
+<li>
+<p><a href="best-practices.html" class="page">Best practices</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1 relatedlinks">
-<h2 id="_related_articles"><a class="anchor" href="#_related_articles"></a>Related articles</h2>
+<h2 id="_related_articles_3"><a class="anchor" href="#_related_articles_3"></a>Related articles</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -763,16 +878,13 @@ The icon file needs to have a name following the convention <code>IconName_icon3
 <p><a href="tutorial-generate-project-using-starter.html" class="page">Generating a project using the starter</a></p>
 </li>
 <li>
-<p><a href="component-configuration.html" class="page">Configuring a component</a></p>
-</li>
-<li>
 <p><a href="component-registering.html" class="page">Registering a component</a></p>
 </li>
 <li>
-<p><a href="component-internationalization.html" class="page">Internationalizing a component</a></p>
+<p><a href="component-configuration.html" class="page">Configuring a component</a></p>
 </li>
 <li>
-<p><a href="component-loading.html" class="page">Loading a component</a></p>
+<p><a href="component-internationalization.html" class="page">Internationalizing a component</a></p>
 </li>
 <li>
 <p><a href="tutorial-configuration-sensitive-data.html" class="page">Masking sensitive data</a></p>
@@ -788,6 +900,32 @@ The icon file needs to have a name following the convention <code>IconName_icon3
           </div>
           <div class="col-sm-3 container article-side-panel">
             <nav class="article-anchors">
+              <div class="article-side-actions">
+                <h1>Actions</h1>
+                <ul class="list-inline">
+                    <li>
+                      <a class="article-side-actions-link" target="_blank" href="file:///C:/git/component-runtime/documentation/src/main/antora/modules/ROOT/pages/component-definition.adoc">
+                        <i class="fa fa-edit"></i>
+                      </a>
+                    </li>
+                    <li>
+                        <ul class="list-inline">
+                            <li>
+                                <a class="article-side-actions-link" target="_blank"
+                                   href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Flocalhost%3A8080%2Fmain%2F1.0.4%2Fcomponent-definition.html&text=Talend%20Component%20Kit%20%3E%3E%20Defining%20a%20component%20execution%20logic%20%3E%3E%20&tw_p=tweetbutton&url=http%3A%2F%2Flocalhost%3A8080%2Fmain%2F1.0.4%2Fcomponent-definition.html">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="article-side-actions-link"
+                                   href="mailto:?subject=Talend%20Component%20Kit%3A%20Defining%20a%20component%20execution%20logic&body=Talend%20Component%20Kit%3A%20Defining%20a%20component%20execution%20logic%0A%0Ahttp%3A%2F%2Flocalhost%3A8080%2Fmain%2F1.0.4%2Fcomponent-definition.html">
+                                    <i class="far fa-envelope"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+              </div>
               <h1>On this page</h1>
             </nav>
           </div>

@@ -20,3 +20,8 @@ yarn.lock
 node_modules
 dist
 .p2localrepository
+documentation/generate-index.bat
+documentation/rebuild.bat
+documentation/rebuild_front.bat
+documentation/rebuild_newUI.bat
+documentation/rebuild_refresh_generated_pages.bat

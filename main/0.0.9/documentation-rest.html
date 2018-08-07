@@ -3,281 +3,304 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talend Component Kit Developer Reference Guide :: Talend Component REST API Documentation</title>
-    <link rel="canonical" href="https://talend.github.io/component-runtime/main/1.0.4/documentation-rest.html">
-    <meta name="generator" content="Talend Component Kit Generator">
-<meta name="date" content="2018-07-26T09:45:51.614Z" scheme="YYYY-MM-DDTHH:mm:ss.sssZ">
+    <title>Talend Component REST API Documentation :: Talend Component Kit Developer Reference Guide</title>
+    <link rel="canonical" href="https://talend.github.io/component-runtime/main/1.0.1/documentation-rest.html">
+    <meta name="generator" content="Antora 1.0.1">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<meta name="date" content="2018-07-23T12:42:59.584Z" scheme="YYYY-MM-DDTHH:mm:ss.sssZ">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/2.8.0/instantsearch.min.css" integrity="sha256-vusmcqkVvKdkwoueSJZLlO9y2P+Lp9fN3WwQUV9Uwfw=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/2.8.0/instantsearch-theme-algolia.min.css" integrity="sha256-ZqsS4QagZnfArbOyheCO4qVjzzsMbg/WMvf5tLtId/Q=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/idea.min.css" integrity="sha256-rD61BPsgKHzJPyg7vpXaYOw6tMYuY2fz1p9033NYeM8=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@talend/bootstrap-theme@0.200.1/dist/bootstrap.css">
 <link rel="stylesheet" href="../../_/css/talend.css">
-<link rel="shortcut icon" href="../../_/images/favicon_0.ico" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PSBN"></script>
+<link rel="shortcut icon" href="../../_/images/favicon_0.ico" />    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PSBN"></script>
     <script>dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','GTM-PSBN')</script>
   </head>
-  <body>
-      <header class="global-header">
-  <nav class="navbar navbar-default">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.html">Component Kit  0.0.9</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Versions <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li class="navbar-item version is-latest">
-                <a href="../1.0.4/index.html">1.0.4</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../1.0.3/index.html">1.0.3</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../1.0.2/index.html">1.0.2</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../1.0.1/index.html">1.0.1</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../1.0.0/index.html">1.0.0</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.12/index.html">0.0.12</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.11/index.html">0.0.11</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.10/index.html">0.0.10</a>
-              </li>
-              <li class="navbar-item version is-current">
-                <a href="index.html">0.0.9</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.8/index.html">0.0.8</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.7/index.html">0.0.7</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.6/index.html">0.0.6</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.5/index.html">0.0.5</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.4/index.html">0.0.4</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.3/index.html">0.0.3</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.2/index.html">0.0.2</a>
-              </li>
-              <li class="navbar-item version">
-                <a href="../0.0.1/index.html">0.0.1</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Repositories <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a class="navbar-item" href="https://github.com/talend/component-api" target="_blank">API</a></li>
-              <li><a class="navbar-item" href="https://github.com/talend/component-runtime" target="_blank">Runtime</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Community <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a class="navbar-item" href="contributors.html">Contributors</a></li>
-              <li><a class="navbar-item" href="https://community.talend.com/t5/Component-Development/bd-p/ComponentDevelopment" target="_blank">Forum</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form role="search" action="search.html" class="navbar-form navbar-right">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-            <input class="form-control" type="text" placeholder="Search" name="query" id="searchInput">
-          </div>
-        </form>
-      </div>
+  <body class="article">
+<header class="header" role="banner">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <div class="navbar-item">
+                <a href="https://talend.github.io/component-runtime">Talend Component Kit</a>
+                <span class="separator">//</span>
+                <a href="https://talend.github.io/component-runtime">Docs</a>
+            </div>
+            <button class="navbar-burger" data-target="topbar-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div id="topbar-nav" class="navbar-menu">
+            <div class="navbar-end">
+                <div class="global-search">
+                    <form role="search" action="search.html">
+                        <div>
+                            <input class="rounded" type="text" placeholder="Search" name="query" id="searchInput">
+                            <input type="hidden" name="idx" value="githubantora">
+                        </div>
+                    </form>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <div class="navbar-link">Projects</div>
+                    <div class="navbar-dropdown">
+                        <div class="navbar-item"><strong>API</strong></div>
+                        <a class="navbar-item" href="https://github.com/talend/component-api">Repository</a>
+                        <hr class="navbar-divider">
+                        <div class="navbar-item"><strong>Runtime</strong></div>
+                        <a class="navbar-item" href="https://github.com/talend/component-runtime">Repository</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </nav>
 </header>
-            <main class="main">
-              <div class="navigation-container grey-background hidden-xs col-sm-2" data-component="main" data-version="0.0.9">
+<div class="main-wrapper">
+<div class="navigation-container" data-component="main" data-version="0.0.9">
   <aside class="navigation" role="navigation">
     <div class="panels">
-      <div class="navigation-menu is-active" data-panel="menu">
-        <nav class="nav-menu">
-          <!-- <label>Talend Component Kit Developer Reference Guide</label> -->
-          <ul class="nav nav-list tree" >
-  <li data-depth="0">
-      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Programming Model</span></label>
-    <ul class="nav nav-list tree" >
-  <li data-depth="1">
-    <a class="menu-link" href="component-definition.html">Definition Model</a>
+<div class="navigation-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Talend Component Kit Developer Reference Guide</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Programming Model</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="component-definition.html">Definition Model</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="component-configuration.html">Configuration</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="component-configuration.html">Configuration</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="component-registering.html">Registration</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="component-registering.html">Registration</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="gallery.html">Widget Gallery</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="gallery.html">Widget Gallery</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="component-internationalization.html">Labels and i18n</a>
-  </li>
-</ul>
-  </li>
-  <li data-depth="0">
-      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Package</span></label>
-    <ul class="nav nav-list tree" >
-  <li data-depth="1">
-    <a class="menu-link" href="component-loading.html">Loading</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="component-internationalization.html">Labels and i18n</a>
   </li>
 </ul>
   </li>
-  <li data-depth="0">
-      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Build</span></label>
-    <ul class="nav nav-list tree" >
-  <li data-depth="1">
-    <a class="menu-link" href="build-tools-maven.html">Maven</a>
-  </li>
-  <li data-depth="1">
-    <a class="menu-link" href="build-tools-gradle.html">Gradle</a>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Package</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="component-loading.html">Loading</a>
   </li>
 </ul>
   </li>
-  <li data-depth="0">
-      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Services</span></label>
-    <ul class="nav nav-list tree" >
-  <li data-depth="1">
-    <a class="menu-link" href="services-internationalization.html">Internationalization</a>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Build</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="build-tools-maven.html">Maven</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="services-actions.html">Actions</a>
-  </li>
-  <li data-depth="1">
-    <a class="menu-link" href="services-built-in.html">Built-in services</a>
-  </li>
-  <li data-depth="1">
-    <a class="menu-link" href="services-interceptors.html">Interceptors</a>
-  </li>
-  <li data-depth="1">
-    <a class="menu-link" href="services-custom-api.html">Extend the API</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="build-tools-gradle.html">Gradle</a>
   </li>
 </ul>
   </li>
-  <li data-depth="0">
-      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Execute</span></label>
-    <ul class="nav nav-list tree" >
-  <li data-depth="1">
-    <a class="menu-link" href="services-pipeline.html">Simple/Test Pipeline API</a>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Services</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="services-internationalization.html">Internationalization</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="https://beam.apache.org/documentation/programming-guide/#creating-a-pipeline">Beam Pipeline API</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="services-actions.html">Actions</a>
   </li>
-</ul>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="services-built-in.html">Built-in services</a>
   </li>
-  <li data-depth="0">
-      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Testing</span></label>
-    <ul class="nav nav-list tree" >
-  <li data-depth="1">
-    <a class="menu-link" href="testing-best-practices.html">JUnit Integration</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="services-interceptors.html">Interceptors</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="testing-junit.html">Testing HTTP API</a>
-  </li>
-  <li data-depth="1">
-    <a class="menu-link" href="testing-beam.html">Beam case</a>
-  </li>
-  <li data-depth="1">
-    <a class="menu-link" href="testing-spark.html">Spark and JUnit</a>
-  </li>
-  <li data-depth="1">
-    <a class="menu-link" href="testing-multiple-envs.html">Multiple environments for the same tests</a>
-  </li>
-  <li data-depth="1">
-    <a class="menu-link" href="testing-maven-passwords.html">Secrets/Passwords and Maven</a>
-  </li>
-  <li data-depth="1">
-    <a class="menu-link" href="testing-generating-data.html">Generating data?</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="services-custom-api.html">Extend the API</a>
   </li>
 </ul>
   </li>
-  <li data-depth="0">
-      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Web</span></label>
-    <ul class="nav nav-list tree" >
-  <li data-depth="1">
-    <a class="menu-link" href="documentation-rest.html">Server</a>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Execute</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="services-pipeline.html">Simple/Test Pipeline API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="https://beam.apache.org/documentation/programming-guide/#creating-a-pipeline">Beam Pipeline API</a>
   </li>
 </ul>
   </li>
-  <li data-depth="0">
-      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Tutorials</span></label>
-    <ul class="nav nav-list tree" >
-  <li data-depth="1">
-    <a class="menu-link" href="tutorial-generate-project-using-starter.html">Generate a component</a>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Testing</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing-best-practices.html">JUnit Integration</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="tutorial-create-an-input-component.html">Create an input component</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing-junit.html">Testing HTTP API</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="tutorial-create-an-output-component.html">Create an output component</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing-beam.html">Beam case</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="tutorial-test-your-components.html">Test your components</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing-spark.html">Spark and JUnit</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="tutorial-configuration-sensitive-data.html">Configuration and sensitive data</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing-multiple-envs.html">Multiple environments for the same tests</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="tutorial-create-components-rest-api.html">Create components for REST API</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing-maven-passwords.html">Secrets/Passwords and Maven</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="tutorial-test-rest-api.html">How to test a REST API</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing-generating-data.html">Generating data?</a>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="tutorial-dev-vs-ci-setup.html">Dev vs CI setup</a>
+</ul>
   </li>
-  <li data-depth="1">
-    <a class="menu-link" href="tutorial-talend-intellij-plugin-usage.html">Talend Intellij plugin</a>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Web</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="documentation-rest.html">Server</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Tutorials</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tutorial-generate-project-using-starter.html">Generate a component</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tutorial-create-an-input-component.html">Create an input component</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tutorial-create-an-output-component.html">Create an output component</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tutorial-test-your-components.html">Test your components</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tutorial-configuration-sensitive-data.html">Configuration and sensitive data</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tutorial-create-components-rest-api.html">Create components for REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tutorial-test-rest-api.html">How to test a REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tutorial-dev-vs-ci-setup.html">Dev vs CI setup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tutorial-talend-intellij-plugin-usage.html">Talend Intellij plugin</a>
   </li>
 </ul>
   </li>
 </ul>
-        </nav>
-      </div>
+  </nav>
+</div>
+<div class="navigation-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Talend Component Kit Developer Reference Guide</span>
+    <span class="version">0.0.9</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Talend Component Kit Developer Reference Guide</span>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../1.0.1/index.html">1.0.1</a>
+        </li>
+        <li class="version">
+          <a href="../1.0.0/index.html">1.0.0</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.12/index.html">0.0.12</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.11/index.html">0.0.11</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.10/index.html">0.0.10</a>
+        </li>
+        <li class="version is-current">
+          <a href="index.html">0.0.9</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.8/index.html">0.0.8</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.7/index.html">0.0.7</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.6/index.html">0.0.6</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.5/index.html">0.0.5</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.4/index.html">0.0.4</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.3/index.html">0.0.3</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.2/index.html">0.0.2</a>
+        </li>
+        <li class="version">
+          <a href="../0.0.1/index.html">0.0.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
     </div>
   </aside>
 </div>
-              <div class="col-xs-12 col-sm-10 maincontent">
-                <div class="toolbar" role="navigation">
-
-    <ol class="breadcrumb grey-background">
-      <li class="crumb"><a href="#">Web</a></li>
-      <li class="crumb active"><a href="documentation-rest.html">Server</a></li>
-    </ol>
+  <main class="main" role="main">
+<div class="toolbar" role="navigation">
+    <button class="navigation-toggle"></button>
+    <nav class="crumbs" role="navigation" aria-label="breadcrumbs">
+  <ul>
+    <li class="crumb"><a href="index.html">Talend Component Kit Developer Reference Guide</a></li>
+    <li class="crumb">Web</li>
+    <li class="crumb"><a href="documentation-rest.html">Server</a></li>
+  </ul>
+</nav>
+    <div class="page-versions">
+  <button class="versions-menu-toggle" title="Show other versions of page">0.0.9</button>
+  <div class="versions-menu">
+    <a class="version" href="../1.0.1/documentation-rest.html">1.0.1</a>
+    <a class="version" href="../1.0.0/documentation-rest.html">1.0.0</a>
+    <a class="version" href="../0.0.12/documentation-rest.html">0.0.12</a>
+    <a class="version" href="../0.0.11/documentation-rest.html">0.0.11</a>
+    <a class="version" href="../0.0.10/documentation-rest.html">0.0.10</a>
+    <a class="version is-current" href="documentation-rest.html">0.0.9</a>
+    <a class="version" href="../0.0.8/documentation-rest.html">0.0.8</a>
+    <a class="version" href="../0.0.7/documentation-rest.html">0.0.7</a>
+    <a class="version" href="../0.0.6/documentation-rest.html">0.0.6</a>
+    <a class="version" href="../0.0.5/documentation-rest.html">0.0.5</a>
+    <a class="version" href="../0.0.4/documentation-rest.html">0.0.4</a>
+    <a class="version" href="../0.0.3/documentation-rest.html">0.0.3</a>
+    <a class="version" href="../0.0.2/documentation-rest.html">0.0.2</a>
+    <a class="version" href="../0.0.1/documentation-rest.html">0.0.1</a>
+  </div>
 </div>
-                <article class="doc">
-        <div class="row">
-          <div class="col-sm-9 row">
-              <h1>Talend Component REST API Documentation</h1>
-            <div class="article-content">
-              <div id="preamble">
+</div>
+<article class="doc">
+        <h1>Talend Component REST API Documentation</h1>
+        <div id="preamble">
 <div class="sectionbody">
 <div class="admonitionblock tip">
 <table>
@@ -295,7 +318,7 @@ a test environment is available on Heroku and browable using Talend Component Ki
 </div>
 </div>
 <div class="sect1">
-<h2 id="_http_api"><a class="anchor" href="#_http_api"></a>HTTP API</h2>
+<h2 id="_http_api"><a class="anchor" href="#_http_api"></a>1. HTTP API</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The HTTP API intends to expose over HTTP most of Talend Component features, it is a standalone Java HTTP server.</p>
@@ -316,12 +339,12 @@ WebSocket protocol is activated for the endpoints as well, instead of <code>/api
 <p>Here is the API:</p>
 </div>
 <div class="sect2">
-<h3 id="_rest_resources_of_component_runtime_server"><a class="anchor" href="#_rest_resources_of_component_runtime_server"></a>REST resources of Component Runtime :: Server</h3>
+<h3 id="_rest_resources_of_component_runtime_server"><a class="anchor" href="#_rest_resources_of_component_runtime_server"></a>1.1. REST resources of Component Runtime :: Server</h3>
 <div class="paragraph">
 <p>0.0.9-SNAPSHOT</p>
 </div>
 <div class="sect3">
-<h4 id="_code_post_api_v1_action_execute_code"><a class="anchor" href="#_code_post_api_v1_action_execute_code"></a><code>POST api/v1/action/execute</code></h4>
+<h4 id="_code_post_api_v1_action_execute_code"><a class="anchor" href="#_code_post_api_v1_action_execute_code"></a>1.1.1. <code>POST api/v1/action/execute</code></h4>
 <div class="paragraph">
 <p>This endpoint will execute any UI action and serialize the response as a JSON (pojo model)
 It takes as input the family, type and name of the related action to identify it and its configuration
@@ -379,7 +402,7 @@ as a flat key value set using the same kind of mapping than for components (opti
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_get_api_v1_action_index_code"><a class="anchor" href="#_code_get_api_v1_action_index_code"></a><code>GET api/v1/action/index</code></h4>
+<h4 id="_code_get_api_v1_action_index_code"><a class="anchor" href="#_code_get_api_v1_action_index_code"></a>1.1.2. <code>GET api/v1/action/index</code></h4>
 <div class="paragraph">
 <p>This endpoint returns the list of available actions for a certain family and potentially filters the "
 output limiting it to some families and types of actions.</p>
@@ -448,7 +471,7 @@ output limiting it to some families and types of actions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_get_api_v1_component_dependencies_code"><a class="anchor" href="#_code_get_api_v1_component_dependencies_code"></a><code>GET api/v1/component/dependencies</code></h4>
+<h4 id="_code_get_api_v1_component_dependencies_code"><a class="anchor" href="#_code_get_api_v1_component_dependencies_code"></a>1.1.3. <code>GET api/v1/component/dependencies</code></h4>
 <div class="paragraph">
 <p>Returns a list of dependencies for the given components.</p>
 </div>
@@ -496,7 +519,7 @@ don&#8217;t forget to add the component itself since it will not be part of the 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_get_api_v1_component_dependency_id_code"><a class="anchor" href="#_code_get_api_v1_component_dependency_id_code"></a><code>GET api/v1/component/dependency/{id}</code></h4>
+<h4 id="_code_get_api_v1_component_dependency_id_code"><a class="anchor" href="#_code_get_api_v1_component_dependency_id_code"></a>1.1.4. <code>GET api/v1/component/dependency/{id}</code></h4>
 <div class="paragraph">
 <p>Return a binary of the dependency represented by <code>id</code>.
 It can be maven coordinates for dependencies or a component id.</p>
@@ -536,7 +559,7 @@ It can be maven coordinates for dependencies or a component id.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_get_api_v1_component_details_code"><a class="anchor" href="#_code_get_api_v1_component_details_code"></a><code>GET api/v1/component/details</code></h4>
+<h4 id="_code_get_api_v1_component_details_code"><a class="anchor" href="#_code_get_api_v1_component_details_code"></a>1.1.5. <code>GET api/v1/component/details</code></h4>
 <div class="paragraph">
 <p>Returns the set of metadata about a few components identified by their 'id'.</p>
 </div>
@@ -666,7 +689,7 @@ It can be maven coordinates for dependencies or a component id.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_get_api_v1_component_icon_family_id_code"><a class="anchor" href="#_code_get_api_v1_component_icon_family_id_code"></a><code>GET api/v1/component/icon/family/{id}</code></h4>
+<h4 id="_code_get_api_v1_component_icon_family_id_code"><a class="anchor" href="#_code_get_api_v1_component_icon_family_id_code"></a>1.1.6. <code>GET api/v1/component/icon/family/{id}</code></h4>
 <div class="paragraph">
 <p>Returns a particular family icon in raw bytes.</p>
 </div>
@@ -711,7 +734,7 @@ It can be maven coordinates for dependencies or a component id.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_get_api_v1_component_icon_id_code"><a class="anchor" href="#_code_get_api_v1_component_icon_id_code"></a><code>GET api/v1/component/icon/{id}</code></h4>
+<h4 id="_code_get_api_v1_component_icon_id_code"><a class="anchor" href="#_code_get_api_v1_component_icon_id_code"></a>1.1.7. <code>GET api/v1/component/icon/{id}</code></h4>
 <div class="paragraph">
 <p>Returns a particular component icon in raw bytes.</p>
 </div>
@@ -756,7 +779,7 @@ It can be maven coordinates for dependencies or a component id.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_get_api_v1_component_index_code"><a class="anchor" href="#_code_get_api_v1_component_index_code"></a><code>GET api/v1/component/index</code></h4>
+<h4 id="_code_get_api_v1_component_index_code"><a class="anchor" href="#_code_get_api_v1_component_index_code"></a>1.1.8. <code>GET api/v1/component/index</code></h4>
 <div class="paragraph">
 <p>Returns the list of available components.</p>
 </div>
@@ -825,7 +848,7 @@ It can be maven coordinates for dependencies or a component id.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_post_api_v1_component_migrate_id_configurationversion_code"><a class="anchor" href="#_code_post_api_v1_component_migrate_id_configurationversion_code"></a><code>POST api/v1/component/migrate/{id}/{configurationVersion}</code></h4>
+<h4 id="_code_post_api_v1_component_migrate_id_configurationversion_code"><a class="anchor" href="#_code_post_api_v1_component_migrate_id_configurationversion_code"></a>1.1.9. <code>POST api/v1/component/migrate/{id}/{configurationVersion}</code></h4>
 <div class="paragraph">
 <p>Allows to migrate a component configuration without calling any component execution.</p>
 </div>
@@ -852,7 +875,7 @@ It can be maven coordinates for dependencies or a component id.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_get_api_v1_configurationtype_details_code"><a class="anchor" href="#_code_get_api_v1_configurationtype_details_code"></a><code>GET api/v1/configurationtype/details</code></h4>
+<h4 id="_code_get_api_v1_configurationtype_details_code"><a class="anchor" href="#_code_get_api_v1_configurationtype_details_code"></a>1.1.10. <code>GET api/v1/configurationtype/details</code></h4>
 <div class="paragraph">
 <p>Returns the set of metadata about a few configurations identified by their 'id'.</p>
 </div>
@@ -886,7 +909,7 @@ It can be maven coordinates for dependencies or a component id.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_get_api_v1_configurationtype_index_code"><a class="anchor" href="#_code_get_api_v1_configurationtype_index_code"></a><code>GET api/v1/configurationtype/index</code></h4>
+<h4 id="_code_get_api_v1_configurationtype_index_code"><a class="anchor" href="#_code_get_api_v1_configurationtype_index_code"></a>1.1.11. <code>GET api/v1/configurationtype/index</code></h4>
 <div class="paragraph">
 <p>Returns all available configuration type - storable models.
 Note that the lightPayload flag allows to load all of them at once when you eagerly need
@@ -922,7 +945,7 @@ to create a client model for all configurations.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_post_api_v1_configurationtype_migrate_id_configurationversion_code"><a class="anchor" href="#_code_post_api_v1_configurationtype_migrate_id_configurationversion_code"></a><code>POST api/v1/configurationtype/migrate/{id}/{configurationVersion}</code></h4>
+<h4 id="_code_post_api_v1_configurationtype_migrate_id_configurationversion_code"><a class="anchor" href="#_code_post_api_v1_configurationtype_migrate_id_configurationversion_code"></a>1.1.12. <code>POST api/v1/configurationtype/migrate/{id}/{configurationVersion}</code></h4>
 <div class="paragraph">
 <p>Allows to migrate a configuration without calling any component execution.</p>
 </div>
@@ -949,7 +972,7 @@ to create a client model for all configurations.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_get_api_v1_documentation_component_id_code"><a class="anchor" href="#_code_get_api_v1_documentation_component_id_code"></a><code>GET api/v1/documentation/component/{id}</code></h4>
+<h4 id="_code_get_api_v1_documentation_component_id_code"><a class="anchor" href="#_code_get_api_v1_documentation_component_id_code"></a>1.1.13. <code>GET api/v1/documentation/component/{id}</code></h4>
 <div class="paragraph">
 <p>Returns an asciidoctor version of the documentation for the component represented by its identifier <code>id</code>.</p>
 </div>
@@ -1005,7 +1028,7 @@ component (_componentname_inlowercase).</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_get_api_v1_environment_code"><a class="anchor" href="#_code_get_api_v1_environment_code"></a><code>GET api/v1/environment</code></h4>
+<h4 id="_code_get_api_v1_environment_code"><a class="anchor" href="#_code_get_api_v1_environment_code"></a>1.1.14. <code>GET api/v1/environment</code></h4>
 <div class="paragraph">
 <p>Returns the environment of this instance. Useful to check the version or configure a healthcheck for the server.</p>
 </div>
@@ -1039,7 +1062,7 @@ component (_componentname_inlowercase).</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_post_api_v1_execution_read_family_component_code"><a class="anchor" href="#_code_post_api_v1_execution_read_family_component_code"></a><code>POST api/v1/execution/read/{family}/{component}</code></h4>
+<h4 id="_code_post_api_v1_execution_read_family_component_code"><a class="anchor" href="#_code_post_api_v1_execution_read_family_component_code"></a>1.1.15. <code>POST api/v1/execution/read/{family}/{component}</code></h4>
 <div class="admonitionblock caution">
 <table>
 <tr>
@@ -1078,7 +1101,7 @@ The format is a JSON based format where each like is a json record.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_code_post_api_v1_execution_write_family_component_code"><a class="anchor" href="#_code_post_api_v1_execution_write_family_component_code"></a><code>POST api/v1/execution/write/{family}/{component}</code></h4>
+<h4 id="_code_post_api_v1_execution_write_family_component_code"><a class="anchor" href="#_code_post_api_v1_execution_write_family_component_code"></a>1.1.16. <code>POST api/v1/execution/write/{family}/{component}</code></h4>
 <div class="admonitionblock caution">
 <table>
 <tr>
@@ -1131,14 +1154,14 @@ the version it was created with (component version, it is in component detail en
 </div>
 </div>
 <div class="sect2">
-<h3 id="_deprecated_endpoints"><a class="anchor" href="#_deprecated_endpoints"></a>Deprecated endpoints</h3>
+<h3 id="_deprecated_endpoints"><a class="anchor" href="#_deprecated_endpoints"></a>1.2. Deprecated endpoints</h3>
 <div class="paragraph">
 <p>If some endpoints are intended to disappear they will be deprecated. In practise it means a header <code>X-Talend-Warning</code>
 will be returned with some message as value.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_websocket_transport"><a class="anchor" href="#_websocket_transport"></a>WebSocket transport</h3>
+<h3 id="_websocket_transport"><a class="anchor" href="#_websocket_transport"></a>1.3. WebSocket transport</h3>
 <div class="paragraph">
 <p>You can connect on any endpoint replacing <code>/api</code> by <code>/websocket</code> and appending <code>/&lt;http method&gt;</code> for the URL and formatting the request as:</p>
 </div>
@@ -1205,7 +1228,7 @@ Accept: application/json
 </div>
 </div>
 <div class="sect1">
-<h2 id="_https_activation"><a class="anchor" href="#_https_activation"></a>HTTPS activation</h2>
+<h2 id="_https_activation"><a class="anchor" href="#_https_activation"></a>2. HTTPS activation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Using the server zip (or <a href="https://github.com/Talend/component-runtime/blob/master/.docker/Dockerfile">Docker image</a>)
@@ -1223,7 +1246,7 @@ export MEECROWAVE_OPTS="-Dskip-http=true -Dssl=true -Dhttps=8443 -Dkeystore-type
 </div>
 </div>
 <div class="sect1">
-<h2 id="_web_forms_and_rest_api"><a class="anchor" href="#_web_forms_and_rest_api"></a>Web forms and REST API</h2>
+<h2 id="_web_forms_and_rest_api"><a class="anchor" href="#_web_forms_and_rest_api"></a>3. Web forms and REST API</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>component-form</code> library provides a way to build a component REST API facade compatible with react form library.</p>
@@ -1368,7 +1391,7 @@ the  <code>/migrate</code> endpoint has nothing special so was not shown in pre
 </table>
 </div>
 <div class="sect2">
-<h3 id="_use_uispec_model_without_all_the_tooling"><a class="anchor" href="#_use_uispec_model_without_all_the_tooling"></a>Use UiSpec model without all the tooling</h3>
+<h3 id="_use_uispec_model_without_all_the_tooling"><a class="anchor" href="#_use_uispec_model_without_all_the_tooling"></a>3.1. Use UiSpec model without all the tooling</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
@@ -1457,7 +1480,7 @@ This can be done adding these dependencies:
 </div>
 </div>
 <div class="sect2">
-<h3 id="_javascript_integration"><a class="anchor" href="#_javascript_integration"></a>Javascript integration</h3>
+<h3 id="_javascript_integration"><a class="anchor" href="#_javascript_integration"></a>3.2. Javascript integration</h3>
 <div class="paragraph">
 <p>Default javascript integration goes through <a href="https://github.com/Talend/ui/tree/master/packages/forms">Talend UI Forms</a> library.</p>
 </div>
@@ -1507,7 +1530,7 @@ export default class ComponentKitForm extends React.Component {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_logging"><a class="anchor" href="#_logging"></a>Logging</h2>
+<h2 id="_logging"><a class="anchor" href="#_logging"></a>4. Logging</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The logging uses Log4j2, you can specify a custom configuration using the system property <code>-Dlog4j.configurationFile</code>
@@ -1630,7 +1653,7 @@ of course you can compose previous layout (message format) and appenders (where 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_server_configuration"><a class="anchor" href="#_server_configuration"></a>Server Configuration</h2>
+<h2 id="_server_configuration"><a class="anchor" href="#_server_configuration"></a>5. Server Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The server module contains several configuration you can set in:</p>
@@ -1779,21 +1802,10 @@ the configuration is read from system properties, environment variables, &#8230;
 </table>
 </div>
 </div>
-            </div>
-          </div>
-          <div class="col-sm-3 container article-side-panel">
-            <nav class="article-anchors">
-              <h1>On this page</h1>
-            </nav>
-          </div>
-          <a href="#top" class="top">Scroll to top</a>
-        </div>
-        <script>(window.talend = (window.talend || {})).article = true;</script>
     </article>
-              </div>
-            </main>
-      </main>
-      <footer class="footer ">
+  </main>
+</div>
+<footer class="footer">
     <div class="footer-with-copyright footer-with-links">
         <ul class="footer-links" style="">
             <li><a class="gwt-Anchor" href="http://www.talend.com/">Talend</a></li>
@@ -1803,10 +1815,40 @@ the configuration is read from system properties, environment variables, &#8230;
         <div class="footer-copyright" style="">&copy; 2018 Talend Inc. All rights reserved.</div>
     </div>
 </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="../../_/js/site.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-<script src="https://cdn.rawgit.com/rmannibucau/00206484a54ac569e091513e6d2a1c01/raw/46cd5d77ba1abe678f83d11490e12a327b62d7ee/anchorific.js"></script>
-<script src="../../_/js/talend.js"></script>
+<script>
+(function (window, document) {
+  hljs.initHighlighting();
+
+  var closedSize = '50px';
+  document.querySelectorAll('.listingblock')
+    .forEach(function (listingblock, index) {
+      var pre = listingblock.querySelector('div.content > pre.highlightjs.highlight');
+      if (!pre) {return;}
+      var code = pre.querySelector('code.hljs');
+      if (!code) {return;}
+
+      var span = document.createElement('span');
+      var initialBlockClosed = listingblock.className.indexOf('initial-block-closed') >= 0;
+      span.className = 'code-' + (initialBlockClosed ? 'collapsed' : 'open') + '-handle code-handle-base';
+
+      var height = code.style.height;
+      if (initialBlockClosed) {code.style.height = closedSize;}
+
+      span.addEventListener('click', function () {
+        if (span.className == 'code-collapsed-handle code-handle-base') {
+          code.style.height = height;
+          span.className = 'code-open-handle code-handle-base';
+        } else {
+          code.style.height = closedSize;
+          span.className = 'code-collapsed-handle code-handle-base';
+        }
+      }, false);
+
+      pre.prepend(span);
+    });
+})(window, document);
+</script>
   </body>
 </html>
