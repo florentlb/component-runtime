@@ -83,6 +83,10 @@ div.documentationindex-before {
   padding-bottom: 2rem;
   padding-top: 1rem;
 }
+
+.fa-5x {
+  font-size: 6rem;
+}
 .documentationindex-icon {
   padding-top: 1rem;
   margin-bottom: 25px;
@@ -110,11 +114,13 @@ div.documentationindex-before {
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-transform: uppercase;
+  color:#758495;
 }
 .documentationindex-description {
   padding: 0.5rem;
+  color:  #555555;
 }
 
 #pagination {
@@ -173,7 +179,7 @@ input.rounded {
   max-height: 400px;
 }
 .gallery tr>td:nth-child(2) {
-	min-width: 500px;
+  min-width: 500px;
 }
 
 .global-search {
@@ -199,7 +205,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px !important;
   min-height: 100vh;
   height: 100vh;
@@ -213,7 +219,7 @@ a {
 h1 {
   color: #295679;
   font-size: 42px;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 30px;
 }
 .documentationindex-sectiontitle {
@@ -222,12 +228,13 @@ h1 {
   font-weight: 300;
   text-transform: none;
   border: none;
+  margin-top: 20px;
   line-height:1em;
 
 }
 h1.article-side-toc {
   color: #535353;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   margin-top: 36px;
   margin-bottom: 14px;
@@ -235,11 +242,10 @@ h1.article-side-toc {
 h2 {
   color: #295679;
   font-size: 32px;
-  font-weight: 300;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  font-weight: 400;
+  margin-top: 50px;
   line-height: 2em;
-  border-top: 1px solid #29567914;
+  border-top: 1px solid #29567959;
 }
 h2 > a{
   color: #295679;
@@ -252,7 +258,8 @@ h2 > a:hover{
 h3 {
   color: #295679;
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 400;
+  margin-top:25px;
 }
 h3 > a{
   color: #295679;
@@ -265,23 +272,23 @@ h3 > a:hover{
 h4 {
   color: #295679;
   font-size: 18px;
-  font-weight: 300;
-  margin-top: 18px;
-    margin-bottom: 10px;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 h5 {
   color: #295679;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  margin-top: 18px;
-    margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 h6 {
   color: #295679;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
-  margin-top: 18px;
-    margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 header,
 footer {
@@ -307,6 +314,8 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 25px;
+  margin-bottom:25px;
 }
 main {
   display: flex;
@@ -496,18 +505,19 @@ pre {
 }
 
 .top {
-	display: none;
-	font-weight: bold;
-	font-family: tahoma;
-	font-size: 10px;
-	width: 70px;
+  padding-bottom: 32px;
+  display: none;
+  font-weight: bold;
+  font-family: tahoma;
+  font-size: 10px;
+  width: 70px;
   height: 1rem;
-	color: #563d7c;
-	font-size: 11px;
-	text-decoration: none;
-	position: fixed;
-	right: 15px;
-	bottom: 10px;
+  color: #563d7c;
+  font-size: 11px;
+  text-decoration: none;
+  position: fixed;
+  right: 15px;
+  bottom: 10px;
 }
 
 .article-side-actions h1 {
@@ -517,7 +527,7 @@ pre {
   position: relative;
 }
 .article-anchors {
-	position: fixed;
+  position: fixed;
   width: 33.333%;
   margin-left: 20px;
 }

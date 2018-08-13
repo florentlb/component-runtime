@@ -1,0 +1,16 @@
+{
+  "name": "documentation",
+  "version": "1.0.5-SNAPSHOT",
+  "private": true,
+  "dependencies": {
+    "js-search": "1.4.2",
+    "@antora/cli": "1.0.3",
+    "@antora/site-generator-default": "1.0.3",
+    "asciidoctor.js": "1.5.7-beta.1",
+    "instantsearch.js": "2.7.4"
+  },
+  "scripts": {
+    "antora:build": "antora --stacktrace ../antora/site.yml",
+    "antora:dev": "antora --stacktrace ../antora/site-dev.yml"
+  }
+}
