@@ -20,6 +20,12 @@ $(document).ready(function () {
              name:'lvl0',
              weight: 1
            }, {
+             name:'keywords',
+             weight: 1
+           },  {
+             name:'description',
+             weight: 1
+           }, {
              name:'lvl1',
              weight: 0.3
            }, {
@@ -41,6 +47,9 @@ $(document).ready(function () {
     } else {
       var segments = search.trim().length ? search.split(/ +/) : [];
       function inlineText(item) {
+        if (item.description && item.description.length > 0) {
+          return item.description;
+        }
         var text = (item.text || []).join('\n');
         for (var i = 0; i < segments.length; i++) {
           text = text.replace(segments[i], '<b>' + segments[i] + '</b>');

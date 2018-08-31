@@ -1,0 +1,100 @@
+= Actions
+
+Actions can be implemented when defining services.
+
+Some common actions need a clear contract so they are defined as API first-class citizen. For example, this is the case for wizards or health checks. Here is the list of the available actions:
+
+== Dynamic Values
+
+Mark a method as being useful to fill potential values of a string option for a property denoted by its value. You can link a field as being completable by using `@Proposable(value)`. The resolution of the completion action is then done through the component family and value of the action. The callback doesn't take any parameter.
+
+- API: @o.t.s.c.api.service.completion.DynamicValues
+- Type: dynamic_values
+- Return type: Values
+- Sample returned type:
+
+[source,js]
+----
+{  "items":[    {
+  "id":"value",
+  "label":"label"
+  }
+]}
+----
+
+== Health Check
+
+This class marks an action performing a connection test.
+
+- API: @o.t.s.c.api.service.healthcheck.HealthCheck
+- Type: healthcheck
+- Return type: HealthCheckStatus
+- Sample returned type:
+
+[source,js]
+----
+{
+  "comment":"Something went wrong",
+  "status":"KO"
+}
+----
+
+== Discover Schema
+
+Mark an action as returning a discovered schema. Its parameter MUST be the type decorated with `@Structure`.
+
+- API: @o.t.s.c.api.service.schema.DiscoverSchema
+- Type: schema
+- Return type: Schema
+- Sample returned type:
+
+[source,js]
+----
+{  "entries":[    {
+  "name":"column1",
+  "type":"STRING"
+  }
+]}
+----
+
+== Health Check
+
+Mark a method as being useful to fill potential values of a string option. You can link a field as being completable using @Suggestable(value). The resolution of the completion action is then done when the user requests it (generally by clicking on a button or entering the field depending the environment).
+
+- API: @o.t.s.c.api.service.completion.Suggestions
+- Type: suggestions
+- Return type: SuggestionValues
+- Sample returned type:
+
+[source,js]
+----
+{ "cacheable":false,
+  "items":[    {
+    "id":"value",
+    "label":"label"
+    }
+]}
+----
+
+== User
+
+- API: @o.t.s.c.api.service.Action
+- Type: user
+- Return type: any
+
+== Health Check
+
+Mark a method as being used to validate a configuration. IMPORTANT: this is a server validation so only use it if you can't use other client side validation to implement it.
+
+- API: @o.t.s.c.api.service.asyncvalidation.AsyncValidation
+- Type: validation
+- Return type: ValidationResult
+- Sample returned type:
+
+[source,js]
+----
+{
+  "comment":"Something went wrong",
+  "status":"KO"
+}
+----
