@@ -8,7 +8,7 @@
     <meta name="description" content="The UiSpec server is a companion application for the Component Server">
     <meta name="keywords" content="client, UiForm">
     <meta name="generator" content="Talend Component Kit Generator">
-<meta name="date" content="2018-08-31T09:57:29.077Z" scheme="YYYY-MM-DDTHH:mm:ss.sssZ">
+<meta name="date" content="2018-09-13T12:21:54.281Z" scheme="YYYY-MM-DDTHH:mm:ss.sssZ">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/2.8.0/instantsearch.min.css" integrity="sha256-vusmcqkVvKdkwoueSJZLlO9y2P+Lp9fN3WwQUV9Uwfw=" crossorigin="anonymous" />
@@ -161,7 +161,7 @@
     <a class="menu-link" href="tutorial-dev-vs-ci-setup.html">Testing in a continuous integration environment</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="tutorial-handle-talend-component-migration.html">Handle Talend component migration</a>
+    <a class="menu-link" href="tutorial-handle-talend-component-migration.html">Handling component version migration</a>
   </li>
 </ul>
   </li>
@@ -227,7 +227,7 @@
     <a class="menu-link" href="best-practices.html">Best practices</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="component-loading.html">Loading a component</a>
+    <a class="menu-link" href="component-loading.html">Component loading</a>
   </li>
   <li data-depth="2">
     <a class="menu-link" href="build-tools-maven.html">Building components with Maven</a>
@@ -338,28 +338,28 @@
     <a class="menu-link" href="gallery.html">Widget and validation gallery</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-actions.html">Actions</a>
+    <a class="menu-link" href="ref-actions.html">List of available actions</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-conditions.html">Conditions</a>
+    <a class="menu-link" href="ref-conditions.html">List of conditions for binding properties</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-configuration-types.html">Configuration types</a>
+    <a class="menu-link" href="ref-configuration-types.html">Component data configuration types</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-constraints.html">Constraints</a>
+    <a class="menu-link" href="ref-constraints.html">Component field constraints and validations</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-junit-environments.html">Junit environments</a>
+    <a class="menu-link" href="ref-junit-environments.html">Provided JUnit testing environments</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-proxy-server-api.html">Proxy server API</a>
+    <a class="menu-link" href="ref-proxy-server-api.html">UiSpec proxy server API</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-proxy-server-configuration.html">Proxy server configuration</a>
+    <a class="menu-link" href="ref-proxy-server-configuration.html">UiSpec proxy server configuration</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-rest-resources.html">HTTP API</a>
+    <a class="menu-link" href="ref-rest-resources.html">Component Server HTTP API reference</a>
   </li>
   <li data-depth="2">
     <a class="menu-link" href="ref-scanning-exclusions.html">Scanning exclusions</a>
@@ -567,6 +567,13 @@ To make it a CDI bean, add <code>@Dependent</code> to the class and if you use t
 <div class="paragraph">
 <p>This allows to use a custom <code>@Ui</code> API and advanced modeling when specific to applications.<br>
 Converters are sorted respecting to the <code>@Priority</code> value. If the annotation is missing, the priority defaults to <code>0</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enabling_help_hints"><a class="anchor" href="#_enabling_help_hints"></a>Enabling help/hints</h3>
+<div class="paragraph">
+<p>It is possible to show under the inputs the help about each property.
+To do that, you must set a <code>PropertyContext.Configuration</code> instance on <code>UiSpecService</code> with the <code>includeDocumentationMetadata</code> attribute set to <code>true</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1900,77 +1907,6 @@ references are automatically initialized if you use <code>PropertiesService#filt
 </div>
 </div>
 <div class="sect4">
-<h5 id="_condition"><a class="anchor" href="#_condition"></a>Condition</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 42.8571%;">
-<col style="width: 57.1429%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Name</th>
-<th class="tableblock halign-left valign-middle">Schema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><strong>children</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>&lt; <a href="#_condition">Condition</a> &gt; array</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><strong>childrenOperator</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>enum (AND, OR)</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><strong>path</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>string</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><strong>shouldBe</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>boolean</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><strong>strategy</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>string</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><strong>values</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>&lt; object &gt; array</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
 <h5 id="_entityref"><a class="anchor" href="#_entityref"></a>EntityRef</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -2670,7 +2606,7 @@ references are automatically initialized if you use <code>PropertiesService#filt
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><a href="#_condition">Condition</a></p>
+<p>&lt; string, &lt; object &gt; array &gt; map</p>
 </div></div></td>
 </tr>
 <tr>

@@ -6,7 +6,7 @@
     <title>Talend Component Kit Developer Guide :: Talend Component Kit Reference guide</title>
     <link rel="canonical" href="http://localhost:8080/main/1.0.5/index-reference-guide.html">
     <meta name="generator" content="Talend Component Kit Generator">
-<meta name="date" content="2018-08-31T09:57:29.067Z" scheme="YYYY-MM-DDTHH:mm:ss.sssZ">
+<meta name="date" content="2018-09-13T12:21:54.244Z" scheme="YYYY-MM-DDTHH:mm:ss.sssZ">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/2.8.0/instantsearch.min.css" integrity="sha256-vusmcqkVvKdkwoueSJZLlO9y2P+Lp9fN3WwQUV9Uwfw=" crossorigin="anonymous" />
@@ -159,7 +159,7 @@
     <a class="menu-link" href="tutorial-dev-vs-ci-setup.html">Testing in a continuous integration environment</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="tutorial-handle-talend-component-migration.html">Handle Talend component migration</a>
+    <a class="menu-link" href="tutorial-handle-talend-component-migration.html">Handling component version migration</a>
   </li>
 </ul>
   </li>
@@ -225,7 +225,7 @@
     <a class="menu-link" href="best-practices.html">Best practices</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="component-loading.html">Loading a component</a>
+    <a class="menu-link" href="component-loading.html">Component loading</a>
   </li>
   <li data-depth="2">
     <a class="menu-link" href="build-tools-maven.html">Building components with Maven</a>
@@ -336,28 +336,28 @@
     <a class="menu-link" href="gallery.html">Widget and validation gallery</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-actions.html">Actions</a>
+    <a class="menu-link" href="ref-actions.html">List of available actions</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-conditions.html">Conditions</a>
+    <a class="menu-link" href="ref-conditions.html">List of conditions for binding properties</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-configuration-types.html">Configuration types</a>
+    <a class="menu-link" href="ref-configuration-types.html">Component data configuration types</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-constraints.html">Constraints</a>
+    <a class="menu-link" href="ref-constraints.html">Component field constraints and validations</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-junit-environments.html">Junit environments</a>
+    <a class="menu-link" href="ref-junit-environments.html">Provided JUnit testing environments</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-proxy-server-api.html">Proxy server API</a>
+    <a class="menu-link" href="ref-proxy-server-api.html">UiSpec proxy server API</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-proxy-server-configuration.html">Proxy server configuration</a>
+    <a class="menu-link" href="ref-proxy-server-configuration.html">UiSpec proxy server configuration</a>
   </li>
   <li data-depth="2">
-    <a class="menu-link" href="ref-rest-resources.html">HTTP API</a>
+    <a class="menu-link" href="ref-rest-resources.html">Component Server HTTP API reference</a>
   </li>
   <li data-depth="2">
     <a class="menu-link" href="ref-scanning-exclusions.html">Scanning exclusions</a>
@@ -610,7 +610,7 @@ enum ActionEnum {
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Option
-Object config;</code></pre>
+List&lt;MyObject&gt; config;</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all table gallery table-striped">
@@ -865,350 +865,627 @@ public HealthCheckStatus testConnection(){
 <div class="sect1">
 <h2 id="_actions"><a class="anchor" href="#_actions"></a>Actions</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all table-striped table-hover table-ordered">
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">API</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Return type</th>
-<th class="tableblock halign-left valign-top">Sample returned type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.service.completion.DynamicValues</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">dynamic_values</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mark a method as being useful to fill potential values of a string option for a property denoted by its value. You can link a field as being completable using @Proposable(value). The resolution of the completion action is then done through the component family and value of the action. The callback doesn&#8217;t take any parameter.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Values</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{  "items":[    {      "id":"value",      "label":"label"    }  ]}</code></pre>
+<div class="sect2">
+<h3 id="_dynamic_values"><a class="anchor" href="#_dynamic_values"></a>Dynamic Values</h3>
+<div class="paragraph">
+<p>Mark a method as being useful to fill potential values of a string option for a property denoted by its value. You can link a field as being completable using @Proposable(value). The resolution of the completion action is then done through the component family and value of the action. The callback doesn&#8217;t take any parameter.</p>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.service.healthcheck.HealthCheck</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">healthcheck</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This class marks an action doing a connection test</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HealthCheckStatus</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{  "comment":"Something went wrong",  "status":"KO"}</code></pre>
+<div class="ulist">
+<ul>
+<li>
+<p>Type: <code>dynamic_values</code></p>
+</li>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.service.completion.DynamicValues</code></p>
+</li>
+<li>
+<p>Returned type: <code>org.talend.sdk.component.api.service.completion.Values</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.service.schema.DiscoverSchema</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">schema</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mark an action as returning a discovered schema. Its parameter MUST be the type decorated with <code>@Structure</code>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Schema</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{  "entries":[    {      "name":"column1",      "type":"STRING"    }  ]}</code></pre>
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
+  "items":[
+    {
+      "id":"value",
+      "label":"label"
+    }
+  ]
+}</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.service.completion.Suggestions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">suggestions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mark a method as being useful to fill potential values of a string option. You can link a field as being completable using @Suggestable(value). The resolution of the completion action is then done when the user requests it (generally by clicking on a button or entering the field depending the environment).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SuggestionValues</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_healthcheck"><a class="anchor" href="#_healthcheck"></a>Healthcheck</h3>
+<div class="paragraph">
+<p>This class marks an action doing a connection test</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type: <code>healthcheck</code></p>
+</li>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.service.healthcheck.HealthCheck</code></p>
+</li>
+<li>
+<p>Returned type: <code>org.talend.sdk.component.api.service.healthcheck.HealthCheckStatus</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{  "cacheable":false,  "items":[    {      "id":"value",      "label":"label"    }  ]}</code></pre>
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
+  "comment":"Something went wrong",
+  "status":"KO"
+}</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.service.Action</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">any</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>-</code></p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.service.asyncvalidation.AsyncValidation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">validation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mark a method as being used to validate a configuration. IMPORTANT: this is a server validation so only use it if you can&#8217;t use other client side validation to implement it.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValidationResult</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_schema_2"><a class="anchor" href="#_schema_2"></a>Schema</h3>
+<div class="paragraph">
+<p>Mark an action as returning a discovered schema. Its parameter MUST be the type decorated with <code>@Structure</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type: <code>schema</code></p>
+</li>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.service.schema.DiscoverSchema</code></p>
+</li>
+<li>
+<p>Returned type: <code>org.talend.sdk.component.api.service.schema.Schema</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{  "comment":"Something went wrong",  "status":"KO"}</code></pre>
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
+  "entries":[
+    {
+      "name":"column1",
+      "type":"STRING"
+    }
+  ]
+}</code></pre>
 </div>
-</div></div></td>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_suggestions"><a class="anchor" href="#_suggestions"></a>Suggestions</h3>
+<div class="paragraph">
+<p>Mark a method as being useful to fill potential values of a string option. You can link a field as being completable using @Suggestable(value). The resolution of the completion action is then done when the user requests it (generally by clicking on a button or entering the field depending the environment).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type: <code>suggestions</code></p>
+</li>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.service.completion.Suggestions</code></p>
+</li>
+<li>
+<p>Returned type: <code>org.talend.sdk.component.api.service.completion.SuggestionValues</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
+  "cacheable":false,
+  "items":[
+    {
+      "id":"value",
+      "label":"label"
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update"><a class="anchor" href="#_update"></a>Update</h3>
+<div class="paragraph">
+<p>This class marks an action returning a new instance replacing part of a form/configuration.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type: <code>update</code></p>
+</li>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.service.update.Update</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_user"><a class="anchor" href="#_user"></a>User</h3>
+<div class="paragraph">
+<p>Extension point for custom UI integrations and custom actions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type: <code>user</code></p>
+</li>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.service.Action</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_validation"><a class="anchor" href="#_validation"></a>Validation</h3>
+<div class="paragraph">
+<p>Mark a method as being used to validate a configuration.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+this is a server validation so only use it if you can&#8217;t use other client side validation to implement it.
+</td>
 </tr>
-</tbody>
 </table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type: <code>validation</code></p>
+</li>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.service.asyncvalidation.AsyncValidation</code></p>
+</li>
+<li>
+<p>Returned type: <code>org.talend.sdk.component.api.service.asyncvalidation.ValidationResult</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
+  "comment":"Something went wrong",
+  "status":"KO"
+}</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_conditions"><a class="anchor" href="#_conditions"></a>Conditions</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all table-striped table-hover table-ordered">
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">API</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Metadata Sample</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.configuration.condition.ActiveIf</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">if</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If the evaluation of the element at the location matches value then the element is considered active, otherwise it is deactivated.</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="sect2">
+<h3 id="_activeif"><a class="anchor" href="#_activeif"></a>ActiveIf</h3>
+<div class="paragraph">
+<p>If the evaluation of the element at the location matches value then the element is considered active, otherwise it is deactivated.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.condition.ActiveIf</code></p>
+</li>
+<li>
+<p>Type: <code>if</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
-  "condition::if::target":"test",
   "condition::if::evaluationStrategy":"DEFAULT",
-  "condition::if::value":"value1,value2",
-  "condition::if::negate":"false"
+  "condition::if::negate":"false",
+  "condition::if::target":"test",
+  "condition::if::value":"value1,value2"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.configuration.condition.ActiveIfs</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ifs</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allows to set multiple visibility conditions on the same property.</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_activeifs"><a class="anchor" href="#_activeifs"></a>ActiveIfs</h3>
+<div class="paragraph">
+<p>Allows to set multiple visibility conditions on the same property.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.condition.ActiveIfs</code></p>
+</li>
+<li>
+<p>Type: <code>ifs</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
-  "condition::ifs::operator":"AND",
-  "condition::if::value::0":"value1,value2",
-  "condition::if::value::1":"SELECTED",
+  "condition::if::evaluationStrategy::0":"DEFAULT",
+  "condition::if::evaluationStrategy::1":"LENGTH",
+  "condition::if::negate::0":"false",
+  "condition::if::negate::1":"true",
   "condition::if::target::0":"sibling1",
   "condition::if::target::1":"../../other",
-  "condition::if::negate::1":"true",
-  "condition::if::negate::0":"false",
-  "condition::if::evaluationStrategy::0":"DEFAULT",
-  "condition::if::evaluationStrategy::1":"LENGTH"
+  "condition::if::value::0":"value1,value2",
+  "condition::if::value::1":"SELECTED",
+  "condition::ifs::operator":"AND"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_configuration_types"><a class="anchor" href="#_configuration_types"></a>Configuration types</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all table-striped table-hover table-ordered">
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">API</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Metadata sample</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o.t.s.c.api.configuration.type.DataSet</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">dataset</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mark a model (complex object) as being a dataset.</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="sect2">
+<h3 id="_dataset"><a class="anchor" href="#_dataset"></a>Dataset</h3>
+<div class="paragraph">
+<p>Mark a model (complex object) as being a dataset.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: @org.talend.sdk.component.api.configuration.type.DataSet</p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
-  "tcomp::configurationtype::type":"dataset",
-  "tcomp::configurationtype::name":"test"
+  "tcomp::configurationtype::name":"test",
+  "tcomp::configurationtype::type":"dataset"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">o.t.s.c.api.configuration.type.DataStore</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">datastore</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mark a model (complex object) as being a datastore (connection to a backend).</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_datastore"><a class="anchor" href="#_datastore"></a>Datastore</h3>
+<div class="paragraph">
+<p>Mark a model (complex object) as being a datastore (connection to a backend).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: @org.talend.sdk.component.api.configuration.type.DataStore</p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
-  "tcomp::configurationtype::type":"datastore",
-  "tcomp::configurationtype::name":"test"
+  "tcomp::configurationtype::name":"test",
+  "tcomp::configurationtype::type":"datastore"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_constraints"><a class="anchor" href="#_constraints"></a>Constraints</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all table-striped table-hover table-ordered">
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">API</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Parameter Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Supported Types</th>
-<th class="tableblock halign-left valign-top">Metadata sample</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@org.talend.sdk.component.api.configuration.constraint.Max</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">maxLength</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">double</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ensure the decorated option size is validated with a higher bound.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CharSequence</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="sect2">
+<h3 id="_maxlength"><a class="anchor" href="#_maxlength"></a>MaxLength</h3>
+<div class="paragraph">
+<p>Ensure the decorated option size is validated with a higher bound.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.constraint.Max</code></p>
+</li>
+<li>
+<p>Name: <code>maxLength</code></p>
+</li>
+<li>
+<p>Parameter Type: <code>double</code></p>
+</li>
+<li>
+<p>Supported Types:&#8201;&#8212;&#8201;<code>java.lang.CharSequence</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "validation::maxLength":"12.34"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@org.talend.sdk.component.api.configuration.constraint.Min</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">minLength</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">double</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ensure the decorated option size is validated with a lower bound.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CharSequence</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_minlength"><a class="anchor" href="#_minlength"></a>MinLength</h3>
+<div class="paragraph">
+<p>Ensure the decorated option size is validated with a lower bound.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.constraint.Min</code></p>
+</li>
+<li>
+<p>Name: <code>minLength</code></p>
+</li>
+<li>
+<p>Parameter Type: <code>double</code></p>
+</li>
+<li>
+<p>Supported Types:&#8201;&#8212;&#8201;<code>java.lang.CharSequence</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "validation::minLength":"12.34"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@org.talend.sdk.component.api.configuration.constraint.Pattern</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">pattern</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Validate the decorated string with a <strong>javascript</strong> pattern (even into the Studio).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CharSequence</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pattern"><a class="anchor" href="#_pattern"></a>Pattern</h3>
+<div class="paragraph">
+<p>Validate the decorated string with a <strong>javascript</strong> pattern (even into the Studio).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.constraint.Pattern</code></p>
+</li>
+<li>
+<p>Name: <code>pattern</code></p>
+</li>
+<li>
+<p>Parameter Type: <code>java.lang.string</code></p>
+</li>
+<li>
+<p>Supported Types:&#8201;&#8212;&#8201;<code>java.lang.CharSequence</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "validation::pattern":"test"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@org.talend.sdk.component.api.configuration.constraint.Max</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">double</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ensure the decorated option size is validated with a higher bound.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Number, int, short, byte, long, double, float</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_max"><a class="anchor" href="#_max"></a>Max</h3>
+<div class="paragraph">
+<p>Ensure the decorated option size is validated with a higher bound.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.constraint.Max</code></p>
+</li>
+<li>
+<p>Name: <code>max</code></p>
+</li>
+<li>
+<p>Parameter Type: <code>double</code></p>
+</li>
+<li>
+<p>Supported Types:&#8201;&#8212;&#8201;<code>java.lang.Number</code>&#8201;&#8212;&#8201;<code>int</code>&#8201;&#8212;&#8201;<code>short</code>&#8201;&#8212;&#8201;<code>byte</code>&#8201;&#8212;&#8201;<code>long</code>&#8201;&#8212;&#8201;<code>double</code>&#8201;&#8212;&#8201;<code>float</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "validation::max":"12.34"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@org.talend.sdk.component.api.configuration.constraint.Min</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">min</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">double</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ensure the decorated option size is validated with a lower bound.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Number, int, short, byte, long, double, float</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_min"><a class="anchor" href="#_min"></a>Min</h3>
+<div class="paragraph">
+<p>Ensure the decorated option size is validated with a lower bound.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.constraint.Min</code></p>
+</li>
+<li>
+<p>Name: <code>min</code></p>
+</li>
+<li>
+<p>Parameter Type: <code>double</code></p>
+</li>
+<li>
+<p>Supported Types:&#8201;&#8212;&#8201;<code>java.lang.Number</code>&#8201;&#8212;&#8201;<code>int</code>&#8201;&#8212;&#8201;<code>short</code>&#8201;&#8212;&#8201;<code>byte</code>&#8201;&#8212;&#8201;<code>long</code>&#8201;&#8212;&#8201;<code>double</code>&#8201;&#8212;&#8201;<code>float</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "validation::min":"12.34"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@org.talend.sdk.component.api.configuration.constraint.Required</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">required</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mark the field as being mandatory.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_required"><a class="anchor" href="#_required"></a>Required</h3>
+<div class="paragraph">
+<p>Mark the field as being mandatory.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.constraint.Required</code></p>
+</li>
+<li>
+<p>Name: <code>required</code></p>
+</li>
+<li>
+<p>Parameter Type: <code>-</code></p>
+</li>
+<li>
+<p>Supported Types:&#8201;&#8212;&#8201;<code>java.lang.Object</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "validation::required":"true"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@org.talend.sdk.component.api.configuration.constraint.Max</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">maxItems</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">double</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ensure the decorated option size is validated with a higher bound.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Collection</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_maxitems"><a class="anchor" href="#_maxitems"></a>MaxItems</h3>
+<div class="paragraph">
+<p>Ensure the decorated option size is validated with a higher bound.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.constraint.Max</code></p>
+</li>
+<li>
+<p>Name: <code>maxItems</code></p>
+</li>
+<li>
+<p>Parameter Type: <code>double</code></p>
+</li>
+<li>
+<p>Supported Types:&#8201;&#8212;&#8201;<code>java.util.Collection</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "validation::maxItems":"12.34"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@org.talend.sdk.component.api.configuration.constraint.Min</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">minItems</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">double</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ensure the decorated option size is validated with a lower bound.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Collection</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_minitems"><a class="anchor" href="#_minitems"></a>MinItems</h3>
+<div class="paragraph">
+<p>Ensure the decorated option size is validated with a lower bound.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.constraint.Min</code></p>
+</li>
+<li>
+<p>Name: <code>minItems</code></p>
+</li>
+<li>
+<p>Parameter Type: <code>double</code></p>
+</li>
+<li>
+<p>Supported Types:&#8201;&#8212;&#8201;<code>java.util.Collection</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "validation::minItems":"12.34"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@org.talend.sdk.component.api.configuration.constraint.Uniques</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uniqueItems</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ensure the elements of the collection must be distinct (kind of set).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Collection</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_uniqueitems"><a class="anchor" href="#_uniqueitems"></a>UniqueItems</h3>
+<div class="paragraph">
+<p>Ensure the elements of the collection must be distinct (kind of set).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.constraint.Uniques</code></p>
+</li>
+<li>
+<p>Name: <code>uniqueItems</code></p>
+</li>
+<li>
+<p>Parameter Type: <code>-</code></p>
+</li>
+<li>
+<p>Supported Types:&#8201;&#8212;&#8201;<code>java.util.Collection</code></p>
+</li>
+<li>
+<p>Sample:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "validation::uniqueItems":"true"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1267,44 +1544,47 @@ the configuration is read from system properties, environment variables, &#8230;
 <div class="sect1">
 <h2 id="_proxy_server_api"><a class="anchor" href="#_proxy_server_api"></a>Proxy server API</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_component_uispec_server"><a class="anchor" href="#_component_uispec_server"></a>Component UiSpec Server</h3>
-<div class="sect3">
-<h4 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h4>
+
+</div>
+</div>
+<h1 id="_component_uispec_server" class="sect0"><a class="anchor" href="#_component_uispec_server"></a>Component UiSpec Server</h1>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>These endpoints allow to obtain UiSpec representations of the component/configuration types properties.</p>
 </div>
-<div class="sect4">
-<h5 id="_version_information"><a class="anchor" href="#_version_information"></a>Version information</h5>
+<div class="sect2">
+<h3 id="_version_information"><a class="anchor" href="#_version_information"></a>Version information</h3>
 <div class="paragraph">
 <p><em>Version</em> : v1</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_contact_information"><a class="anchor" href="#_contact_information"></a>Contact information</h5>
+<div class="sect2">
+<h3 id="_contact_information"><a class="anchor" href="#_contact_information"></a>Contact information</h3>
 <div class="paragraph">
 <p><em>Contact</em> : Talend<br>
 <em>Contact Email</em> : <a href="mailto:contact@talend.com">contact@talend.com</a></p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_license_information"><a class="anchor" href="#_license_information"></a>License information</h5>
+<div class="sect2">
+<h3 id="_license_information"><a class="anchor" href="#_license_information"></a>License information</h3>
 <div class="paragraph">
 <p><em>License</em> : Apache 2.0<br>
 <em>License URL</em> : <a href="http://www.apache.org/licenses/LICENSE-2.0.html" class="bare">www.apache.org/licenses/LICENSE-2.0.html</a><br>
 <em>Terms of service</em> : null</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_uri_scheme"><a class="anchor" href="#_uri_scheme"></a>URI scheme</h5>
+<div class="sect2">
+<h3 id="_uri_scheme"><a class="anchor" href="#_uri_scheme"></a>URI scheme</h3>
 <div class="paragraph">
 <p><em>Host</em> : host:port<br>
 <em>BasePath</em> : /componentproxy/api/v1<br>
 <em>Schemes</em> : HTTP, HTTPS</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_tags"><a class="anchor" href="#_tags"></a>Tags</h5>
+<div class="sect2">
+<h3 id="_tags"><a class="anchor" href="#_tags"></a>Tags</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1341,23 +1621,25 @@ the configuration is read from system properties, environment variables, &#8230;
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_paths"><a class="anchor" href="#_paths"></a>Paths</h4>
-<div class="sect4">
-<h5 id="_execute"><a class="anchor" href="#_execute"></a>This endpoint execute an action required by a form.</h5>
+</div>
+<div class="sect1">
+<h2 id="_paths"><a class="anchor" href="#_paths"></a>Paths</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_execute"><a class="anchor" href="#_execute"></a>This endpoint execute an action required by a form.</h3>
 <div class="literalblock">
 <div class="content">
 <pre>POST /actions/execute</pre>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_description"><a class="anchor" href="#_description"></a>Description</h6>
+<div class="sect3">
+<h4 id="_description"><a class="anchor" href="#_description"></a>Description</h4>
 <div class="paragraph">
 <p>configuration types has action that can be executed using this endpoint</p>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_parameters"><a class="anchor" href="#_parameters"></a>Parameters</h6>
+<div class="sect3">
+<h4 id="_parameters"><a class="anchor" href="#_parameters"></a>Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 22.2222%;">
@@ -1423,8 +1705,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_responses"><a class="anchor" href="#_responses"></a>Responses</h6>
+<div class="sect3">
+<h4 id="_responses"><a class="anchor" href="#_responses"></a>Responses</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 10%;">
@@ -1488,8 +1770,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_consumes"><a class="anchor" href="#_consumes"></a>Consumes</h6>
+<div class="sect3">
+<h4 id="_consumes"><a class="anchor" href="#_consumes"></a>Consumes</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1498,8 +1780,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_produces"><a class="anchor" href="#_produces"></a>Produces</h6>
+<div class="sect3">
+<h4 id="_produces"><a class="anchor" href="#_produces"></a>Produces</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1508,8 +1790,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_tags_2"><a class="anchor" href="#_tags_2"></a>Tags</h6>
+<div class="sect3">
+<h4 id="_tags_2"><a class="anchor" href="#_tags_2"></a>Tags</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1522,21 +1804,21 @@ the configuration is read from system properties, environment variables, &#8230;
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_getrootconfig"><a class="anchor" href="#_getrootconfig"></a>Return all the available root configuration (Data store like) from the component server</h5>
+<div class="sect2">
+<h3 id="_getrootconfig"><a class="anchor" href="#_getrootconfig"></a>Return all the available root configuration (Data store like) from the component server</h3>
 <div class="literalblock">
 <div class="content">
 <pre>GET /configurations</pre>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_description_2"><a class="anchor" href="#_description_2"></a>Description</h6>
+<div class="sect3">
+<h4 id="_description_2"><a class="anchor" href="#_description_2"></a>Description</h4>
 <div class="paragraph">
 <p>Every configuration has an icon. In the response an icon key is returned. this icon key can be one of the bundled icons or a custom one. The consumer of this endpoint will need to check if the icon key is in the icons bundle otherwise the icon need to be gathered using the <code>familyId</code> from this endpoint <code>configurations/{id}/icon</code></p>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_responses_2"><a class="anchor" href="#_responses_2"></a>Responses</h6>
+<div class="sect3">
+<h4 id="_responses_2"><a class="anchor" href="#_responses_2"></a>Responses</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 10%;">
@@ -1567,8 +1849,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_consumes_2"><a class="anchor" href="#_consumes_2"></a>Consumes</h6>
+<div class="sect3">
+<h4 id="_consumes_2"><a class="anchor" href="#_consumes_2"></a>Consumes</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1577,8 +1859,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_produces_2"><a class="anchor" href="#_produces_2"></a>Produces</h6>
+<div class="sect3">
+<h4 id="_produces_2"><a class="anchor" href="#_produces_2"></a>Produces</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1587,8 +1869,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_tags_3"><a class="anchor" href="#_tags_3"></a>Tags</h6>
+<div class="sect3">
+<h4 id="_tags_3"><a class="anchor" href="#_tags_3"></a>Tags</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1601,15 +1883,15 @@ the configuration is read from system properties, environment variables, &#8230;
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_getinitialform"><a class="anchor" href="#_getinitialform"></a>Return a form description ( Ui Spec ) without a specific configuration</h5>
+<div class="sect2">
+<h3 id="_getinitialform"><a class="anchor" href="#_getinitialform"></a>Return a form description ( Ui Spec ) without a specific configuration</h3>
 <div class="literalblock">
 <div class="content">
 <pre>GET /configurations/form/initial/{type}</pre>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_parameters_2"><a class="anchor" href="#_parameters_2"></a>Parameters</h6>
+<div class="sect3">
+<h4 id="_parameters_2"><a class="anchor" href="#_parameters_2"></a>Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 22.2222%;">
@@ -1639,8 +1921,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_responses_3"><a class="anchor" href="#_responses_3"></a>Responses</h6>
+<div class="sect3">
+<h4 id="_responses_3"><a class="anchor" href="#_responses_3"></a>Responses</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 10%;">
@@ -1671,8 +1953,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_consumes_3"><a class="anchor" href="#_consumes_3"></a>Consumes</h6>
+<div class="sect3">
+<h4 id="_consumes_3"><a class="anchor" href="#_consumes_3"></a>Consumes</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1681,8 +1963,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_produces_3"><a class="anchor" href="#_produces_3"></a>Produces</h6>
+<div class="sect3">
+<h4 id="_produces_3"><a class="anchor" href="#_produces_3"></a>Produces</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1691,8 +1973,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_tags_4"><a class="anchor" href="#_tags_4"></a>Tags</h6>
+<div class="sect3">
+<h4 id="_tags_4"><a class="anchor" href="#_tags_4"></a>Tags</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1714,15 +1996,15 @@ the configuration is read from system properties, environment variables, &#8230;
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_getform"><a class="anchor" href="#_getform"></a>Return a form description ( Ui Spec ) of a specific configuration</h5>
+<div class="sect2">
+<h3 id="_getform"><a class="anchor" href="#_getform"></a>Return a form description ( Ui Spec ) of a specific configuration</h3>
 <div class="literalblock">
 <div class="content">
 <pre>GET /configurations/form/{id}</pre>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_parameters_3"><a class="anchor" href="#_parameters_3"></a>Parameters</h6>
+<div class="sect3">
+<h4 id="_parameters_3"><a class="anchor" href="#_parameters_3"></a>Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 22.2222%;">
@@ -1752,8 +2034,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_responses_4"><a class="anchor" href="#_responses_4"></a>Responses</h6>
+<div class="sect3">
+<h4 id="_responses_4"><a class="anchor" href="#_responses_4"></a>Responses</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 10%;">
@@ -1784,8 +2066,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_consumes_4"><a class="anchor" href="#_consumes_4"></a>Consumes</h6>
+<div class="sect3">
+<h4 id="_consumes_4"><a class="anchor" href="#_consumes_4"></a>Consumes</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1794,8 +2076,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_produces_4"><a class="anchor" href="#_produces_4"></a>Produces</h6>
+<div class="sect3">
+<h4 id="_produces_4"><a class="anchor" href="#_produces_4"></a>Produces</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1804,8 +2086,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_tags_5"><a class="anchor" href="#_tags_5"></a>Tags</h6>
+<div class="sect3">
+<h4 id="_tags_5"><a class="anchor" href="#_tags_5"></a>Tags</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1827,15 +2109,15 @@ the configuration is read from system properties, environment variables, &#8230;
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_getconfigurationiconbyid"><a class="anchor" href="#_getconfigurationiconbyid"></a>Return the configuration icon file in png format</h5>
+<div class="sect2">
+<h3 id="_getconfigurationiconbyid"><a class="anchor" href="#_getconfigurationiconbyid"></a>Return the configuration icon file in png format</h3>
 <div class="literalblock">
 <div class="content">
 <pre>GET /configurations/icon/{id}</pre>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_parameters_4"><a class="anchor" href="#_parameters_4"></a>Parameters</h6>
+<div class="sect3">
+<h4 id="_parameters_4"><a class="anchor" href="#_parameters_4"></a>Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 22.2222%;">
@@ -1865,8 +2147,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_responses_5"><a class="anchor" href="#_responses_5"></a>Responses</h6>
+<div class="sect3">
+<h4 id="_responses_5"><a class="anchor" href="#_responses_5"></a>Responses</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 10%;">
@@ -1897,8 +2179,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_consumes_5"><a class="anchor" href="#_consumes_5"></a>Consumes</h6>
+<div class="sect3">
+<h4 id="_consumes_5"><a class="anchor" href="#_consumes_5"></a>Consumes</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1907,8 +2189,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_produces_5"><a class="anchor" href="#_produces_5"></a>Produces</h6>
+<div class="sect3">
+<h4 id="_produces_5"><a class="anchor" href="#_produces_5"></a>Produces</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1920,8 +2202,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_tags_6"><a class="anchor" href="#_tags_6"></a>Tags</h6>
+<div class="sect3">
+<h4 id="_tags_6"><a class="anchor" href="#_tags_6"></a>Tags</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1931,15 +2213,15 @@ the configuration is read from system properties, environment variables, &#8230;
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_putconfiguration"><a class="anchor" href="#_putconfiguration"></a>Update a configuration.</h5>
+<div class="sect2">
+<h3 id="_putconfiguration"><a class="anchor" href="#_putconfiguration"></a>Update a configuration.</h3>
 <div class="literalblock">
 <div class="content">
 <pre>POST /configurations/persistence/edit/{id}</pre>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_parameters_5"><a class="anchor" href="#_parameters_5"></a>Parameters</h6>
+<div class="sect3">
+<h4 id="_parameters_5"><a class="anchor" href="#_parameters_5"></a>Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 22.2222%;">
@@ -1969,8 +2251,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_responses_6"><a class="anchor" href="#_responses_6"></a>Responses</h6>
+<div class="sect3">
+<h4 id="_responses_6"><a class="anchor" href="#_responses_6"></a>Responses</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 10%;">
@@ -2001,8 +2283,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_consumes_6"><a class="anchor" href="#_consumes_6"></a>Consumes</h6>
+<div class="sect3">
+<h4 id="_consumes_6"><a class="anchor" href="#_consumes_6"></a>Consumes</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2011,8 +2293,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_produces_6"><a class="anchor" href="#_produces_6"></a>Produces</h6>
+<div class="sect3">
+<h4 id="_produces_6"><a class="anchor" href="#_produces_6"></a>Produces</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2021,8 +2303,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_tags_7"><a class="anchor" href="#_tags_7"></a>Tags</h6>
+<div class="sect3">
+<h4 id="_tags_7"><a class="anchor" href="#_tags_7"></a>Tags</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2047,15 +2329,15 @@ the configuration is read from system properties, environment variables, &#8230;
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_postconfigurationfromtype"><a class="anchor" href="#_postconfigurationfromtype"></a>Saves a configuration based on a type. Concretely it is the same as <code>/persistence/save/{formId}</code> but the <code>formId</code> is contained into the payload itself and marked in the metadata as such.</h5>
+<div class="sect2">
+<h3 id="_postconfigurationfromtype"><a class="anchor" href="#_postconfigurationfromtype"></a>Saves a configuration based on a type. Concretely it is the same as <code>/persistence/save/{formId}</code> but the <code>formId</code> is contained into the payload itself and marked in the metadata as such.</h3>
 <div class="literalblock">
 <div class="content">
 <pre>POST /configurations/persistence/save-from-type/{type}</pre>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_parameters_6"><a class="anchor" href="#_parameters_6"></a>Parameters</h6>
+<div class="sect3">
+<h4 id="_parameters_6"><a class="anchor" href="#_parameters_6"></a>Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 22.2222%;">
@@ -2085,8 +2367,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_responses_7"><a class="anchor" href="#_responses_7"></a>Responses</h6>
+<div class="sect3">
+<h4 id="_responses_7"><a class="anchor" href="#_responses_7"></a>Responses</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 10%;">
@@ -2117,8 +2399,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_consumes_7"><a class="anchor" href="#_consumes_7"></a>Consumes</h6>
+<div class="sect3">
+<h4 id="_consumes_7"><a class="anchor" href="#_consumes_7"></a>Consumes</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2127,8 +2409,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_produces_7"><a class="anchor" href="#_produces_7"></a>Produces</h6>
+<div class="sect3">
+<h4 id="_produces_7"><a class="anchor" href="#_produces_7"></a>Produces</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2137,8 +2419,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_tags_8"><a class="anchor" href="#_tags_8"></a>Tags</h6>
+<div class="sect3">
+<h4 id="_tags_8"><a class="anchor" href="#_tags_8"></a>Tags</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2163,15 +2445,15 @@ the configuration is read from system properties, environment variables, &#8230;
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_postconfigurationfromformid"><a class="anchor" href="#_postconfigurationfromformid"></a>Saves a configuration based on a form identifier.</h5>
+<div class="sect2">
+<h3 id="_postconfigurationfromformid"><a class="anchor" href="#_postconfigurationfromformid"></a>Saves a configuration based on a form identifier.</h3>
 <div class="literalblock">
 <div class="content">
 <pre>POST /configurations/persistence/save/{formId}</pre>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_parameters_7"><a class="anchor" href="#_parameters_7"></a>Parameters</h6>
+<div class="sect3">
+<h4 id="_parameters_7"><a class="anchor" href="#_parameters_7"></a>Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 22.2222%;">
@@ -2201,8 +2483,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_responses_8"><a class="anchor" href="#_responses_8"></a>Responses</h6>
+<div class="sect3">
+<h4 id="_responses_8"><a class="anchor" href="#_responses_8"></a>Responses</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 10%;">
@@ -2233,8 +2515,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect5">
-<h6 id="_consumes_8"><a class="anchor" href="#_consumes_8"></a>Consumes</h6>
+<div class="sect3">
+<h4 id="_consumes_8"><a class="anchor" href="#_consumes_8"></a>Consumes</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2243,8 +2525,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_produces_8"><a class="anchor" href="#_produces_8"></a>Produces</h6>
+<div class="sect3">
+<h4 id="_produces_8"><a class="anchor" href="#_produces_8"></a>Produces</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2253,8 +2535,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="_tags_9"><a class="anchor" href="#_tags_9"></a>Tags</h6>
+<div class="sect3">
+<h4 id="_tags_9"><a class="anchor" href="#_tags_9"></a>Tags</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2280,117 +2562,48 @@ the configuration is read from system properties, environment variables, &#8230;
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_definitions"><a class="anchor" href="#_definitions"></a>Definitions</h4>
-<div class="sect4">
-<h5 id="_completionstage"><a class="anchor" href="#_completionstage"></a>CompletionStage</h5>
+</div>
+<div class="sect1">
+<h2 id="_definitions"><a class="anchor" href="#_definitions"></a>Definitions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_completionstage"><a class="anchor" href="#_completionstage"></a>CompletionStage</h3>
 <div class="paragraph">
 <p><em>Type</em> : object</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_completionstagebyte"><a class="anchor" href="#_completionstagebyte"></a>CompletionStageByte[]</h5>
+<div class="sect2">
+<h3 id="_completionstagebyte"><a class="anchor" href="#_completionstagebyte"></a>CompletionStageByte[]</h3>
 <div class="paragraph">
 <p><em>Type</em> : object</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_completionstagecollectionsimplepropertydefinition"><a class="anchor" href="#_completionstagecollectionsimplepropertydefinition"></a>CompletionStageCollectionSimplePropertyDefinition</h5>
+<div class="sect2">
+<h3 id="_completionstagecollectionsimplepropertydefinition"><a class="anchor" href="#_completionstagecollectionsimplepropertydefinition"></a>CompletionStageCollectionSimplePropertyDefinition</h3>
 <div class="paragraph">
 <p><em>Type</em> : object</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_completionstagemapstringobject"><a class="anchor" href="#_completionstagemapstringobject"></a>CompletionStageMapStringObject</h5>
+<div class="sect2">
+<h3 id="_completionstagemapstringobject"><a class="anchor" href="#_completionstagemapstringobject"></a>CompletionStageMapStringObject</h3>
 <div class="paragraph">
 <p><em>Type</em> : object</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_completionstagemapstringstring"><a class="anchor" href="#_completionstagemapstringstring"></a>CompletionStageMapStringString</h5>
+<div class="sect2">
+<h3 id="_completionstagemapstringstring"><a class="anchor" href="#_completionstagemapstringstring"></a>CompletionStageMapStringString</h3>
 <div class="paragraph">
 <p><em>Type</em> : object</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_completionstagenodes"><a class="anchor" href="#_completionstagenodes"></a>CompletionStageNodes</h5>
+<div class="sect2">
+<h3 id="_completionstagenodes"><a class="anchor" href="#_completionstagenodes"></a>CompletionStageNodes</h3>
 <div class="paragraph">
 <p><em>Type</em> : object</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_condition"><a class="anchor" href="#_condition"></a>Condition</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 42.8571%;">
-<col style="width: 57.1429%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Name</th>
-<th class="tableblock halign-left valign-middle">Schema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><strong>children</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>&lt; <a href="#_condition">Condition</a> &gt; array</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><strong>childrenOperator</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>enum (AND, OR)</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><strong>path</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>string</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><strong>shouldBe</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>boolean</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><strong>strategy</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>string</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><strong>values</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p>&lt; object &gt; array</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_entityref"><a class="anchor" href="#_entityref"></a>EntityRef</h5>
+<div class="sect2">
+<h3 id="_entityref"><a class="anchor" href="#_entityref"></a>EntityRef</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2420,8 +2633,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_jsonschema"><a class="anchor" href="#_jsonschema"></a>JsonSchema</h5>
+<div class="sect2">
+<h3 id="_jsonschema"><a class="anchor" href="#_jsonschema"></a>JsonSchema</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 42.8571%;">
@@ -2608,8 +2821,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_namevalue"><a class="anchor" href="#_namevalue"></a>NameValue</h5>
+<div class="sect2">
+<h3 id="_namevalue"><a class="anchor" href="#_namevalue"></a>NameValue</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 42.8571%;">
@@ -2643,8 +2856,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_node"><a class="anchor" href="#_node"></a>Node</h5>
+<div class="sect2">
+<h3 id="_node"><a class="anchor" href="#_node"></a>Node</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2758,8 +2971,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_nodes"><a class="anchor" href="#_nodes"></a>Nodes</h5>
+<div class="sect2">
+<h3 id="_nodes"><a class="anchor" href="#_nodes"></a>Nodes</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2789,8 +3002,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_option"><a class="anchor" href="#_option"></a>Option</h5>
+<div class="sect2">
+<h3 id="_option"><a class="anchor" href="#_option"></a>Option</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 42.8571%;">
@@ -2824,8 +3037,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_parameter"><a class="anchor" href="#_parameter"></a>Parameter</h5>
+<div class="sect2">
+<h3 id="_parameter"><a class="anchor" href="#_parameter"></a>Parameter</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 42.8571%;">
@@ -2859,8 +3072,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_proxyerrorpayload"><a class="anchor" href="#_proxyerrorpayload"></a>ProxyErrorPayload</h5>
+<div class="sect2">
+<h3 id="_proxyerrorpayload"><a class="anchor" href="#_proxyerrorpayload"></a>ProxyErrorPayload</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2902,8 +3115,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_trigger"><a class="anchor" href="#_trigger"></a>Trigger</h5>
+<div class="sect2">
+<h3 id="_trigger"><a class="anchor" href="#_trigger"></a>Trigger</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 42.8571%;">
@@ -2973,8 +3186,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_ui"><a class="anchor" href="#_ui"></a>Ui</h5>
+<div class="sect2">
+<h3 id="_ui"><a class="anchor" href="#_ui"></a>Ui</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 42.8571%;">
@@ -3017,8 +3230,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_uinode"><a class="anchor" href="#_uinode"></a>UiNode</h5>
+<div class="sect2">
+<h3 id="_uinode"><a class="anchor" href="#_uinode"></a>UiNode</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3060,8 +3273,8 @@ the configuration is read from system properties, environment variables, &#8230;
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_uischema"><a class="anchor" href="#_uischema"></a>UiSchema</h5>
+<div class="sect2">
+<h3 id="_uischema"><a class="anchor" href="#_uischema"></a>UiSchema</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 42.8571%;">
@@ -3089,7 +3302,7 @@ the configuration is read from system properties, environment variables, &#8230;
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><a href="#_condition">Condition</a></p>
+<p>&lt; string, &lt; object &gt; array &gt; map</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3229,8 +3442,6 @@ the configuration is read from system properties, environment variables, &#8230;
 </tr>
 </tbody>
 </table>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -5265,125 +5476,231 @@ the configuration is read from system properties, environment variables, &#8230;
 <div class="sect1">
 <h2 id="_user_interface_api"><a class="anchor" href="#_user_interface_api"></a>User Interface API</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all table-striped table-hover table-ordered">
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">API</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Generated property metadata</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.configuration.ui.DefaultValue</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Provide a default value the UI can use - only for primitive fields.</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="sect2">
+<h3 id="_defaultvalue"><a class="anchor" href="#_defaultvalue"></a>@DefaultValue</h3>
+<div class="paragraph">
+<p>Provide a default value the UI can use - only for primitive fields.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.ui.DefaultValue</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample:</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "ui::defaultvalue::value":"test"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.configuration.ui.OptionsOrder</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allows to sort a class properties.</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optionsorder"><a class="anchor" href="#_optionsorder"></a>@OptionsOrder</h3>
+<div class="paragraph">
+<p>Allows to sort a class properties.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.ui.OptionsOrder</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample:</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "ui::optionsorder::value":"value1,value2"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.configuration.ui.layout.AutoLayout</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Request the rendered to do what it thinks is best.</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_autolayout"><a class="anchor" href="#_autolayout"></a>@AutoLayout</h3>
+<div class="paragraph">
+<p>Request the rendered to do what it thinks is best.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.ui.layout.AutoLayout</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample:</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "ui::autolayout":"true"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.configuration.ui.layout.GridLayout</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Advanced layout to place properties by row, this is exclusive with <code>@OptionsOrder</code>.</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gridlayout"><a class="anchor" href="#_gridlayout"></a>@GridLayout</h3>
+<div class="paragraph">
+<p>Advanced layout to place properties by row, this is exclusive with <code>@OptionsOrder</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.ui.layout.GridLayout</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample:</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "ui::gridlayout::value1::value":"first|second,third",
   "ui::gridlayout::value2::value":"first|second,third"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.configuration.ui.layout.GridLayouts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allow to configure multiple grid layouts on the same class, qualified with a classifier (name)</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gridlayouts"><a class="anchor" href="#_gridlayouts"></a>@GridLayouts</h3>
+<div class="paragraph">
+<p>Allow to configure multiple grid layouts on the same class, qualified with a classifier (name)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.ui.layout.GridLayouts</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample:</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "ui::gridlayout::Advanced::value":"another",
   "ui::gridlayout::Main::value":"first|second,third"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.configuration.ui.layout.HorizontalLayout</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Put on a configuration class it notifies the UI an horizontal layout is preferred.</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_horizontallayout"><a class="anchor" href="#_horizontallayout"></a>@HorizontalLayout</h3>
+<div class="paragraph">
+<p>Put on a configuration class it notifies the UI an horizontal layout is preferred.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.ui.layout.HorizontalLayout</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample:</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "ui::horizontallayout":"true"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.configuration.ui.layout.VerticalLayout</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Put on a configuration class it notifies the UI a vertical layout is preferred.</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_verticallayout"><a class="anchor" href="#_verticallayout"></a>@VerticalLayout</h3>
+<div class="paragraph">
+<p>Put on a configuration class it notifies the UI a vertical layout is preferred.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.ui.layout.VerticalLayout</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample:</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "ui::verticallayout":"true"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.configuration.ui.widget.Code</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mark a field as being represented by some code widget (vs textarea for instance).</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_2"><a class="anchor" href="#_code_2"></a>@Code</h3>
+<div class="paragraph">
+<p>Mark a field as being represented by some code widget (vs textarea for instance).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.ui.widget.Code</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample:</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "ui::code::value":"test"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.configuration.ui.widget.Credential</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mark a field as being a credential. It is typically used to hide the value in the UI.</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_credential"><a class="anchor" href="#_credential"></a>@Credential</h3>
+<div class="paragraph">
+<p>Mark a field as being a credential. It is typically used to hide the value in the UI.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.ui.widget.Credential</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample:</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "ui::credential":"true"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.configuration.ui.widget.Structure</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mark a List&lt;String&gt; or Map&lt;String, String&gt; field as being represented as the component data selector (field names generally or field names as key and type as value).</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_structure"><a class="anchor" href="#_structure"></a>@Structure</h3>
+<div class="paragraph">
+<p>Mark a List&lt;String&gt; or Map&lt;String, String&gt; field as being represented as the component data selector (field names generally or field names as key and type as value).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.ui.widget.Structure</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample:</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "ui::structure::discoverSchema":"test",
@@ -5391,21 +5708,31 @@ the configuration is read from system properties, environment variables, &#8230;
   "ui::structure::value":"test"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">@o.t.s.c.api.configuration.ui.widget.TextArea</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mark a field as being represented by a textarea(multiline text input).</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_textarea_2"><a class="anchor" href="#_textarea_2"></a>@TextArea</h3>
+<div class="paragraph">
+<p>Mark a field as being represented by a textarea(multiline text input).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API: <code>@org.talend.sdk.component.api.configuration.ui.widget.TextArea</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sample:</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">{
   "ui::textarea":"true"
 }</code></pre>
 </div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
+</div>
+</div>
 </div>
 </div>
             </div>
