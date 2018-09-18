@@ -6,7 +6,7 @@
     <title>Talend Component Kit Developer Guide :: Talend Component Kit Developer Guide</title>
     <link rel="canonical" href="http://localhost:8080/main/1.0.5/all-in-one.html">
     <meta name="generator" content="Talend Component Kit Generator">
-<meta name="date" content="2018-09-13T12:21:54.153Z" scheme="YYYY-MM-DDTHH:mm:ss.sssZ">
+<meta name="date" content="2018-09-18T09:37:03.438Z" scheme="YYYY-MM-DDTHH:mm:ss.sssZ">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/2.8.0/instantsearch.min.css" integrity="sha256-vusmcqkVvKdkwoueSJZLlO9y2P+Lp9fN3WwQUV9Uwfw=" crossorigin="anonymous" />
@@ -1381,7 +1381,7 @@ The plugin automatically detects your configuration and provides you with key co
 <p>Select your build tool. This tutorial uses Maven, but you can select Gradle instead.</p>
 </li>
 <li>
-<p>Add the <strong>Talend Component Kit Testing</strong> facet to your project to automatically generate unit tests for the components created later in this tutorial.<br></p>
+<p>Add the <strong>Talend Component Kit Testing</strong> facet to your project to automatically generate unit tests for the components created later in this tutorial. Add any facet you need.<br></p>
 <div class="imageblock">
 <div class="content">
 <img src="_images/starter/starter_test_facet.png" alt="Test facet" width="80%">
@@ -3719,7 +3719,7 @@ When using the programmatic API, metadata is prefixed with <code>tcomp::</code>.
 <td class="tableblock halign-left valign-top"><p class="tableblock">Display name of a configuration type (dataStore or dataSet). Important: this key is read from the family package (not the class package), to unify the localization of the metadata.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">actions.${family}.${actionType}.${actionName}._displayName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${family}.actions.${actionType}.${actionName}._displayName</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Display name of an action of the family. Specifying it is optional and will default on the action name if not set.</p></td>
 </tr>
 <tr>
@@ -4170,8 +4170,27 @@ A Talend Component Kit plugin is available for each of the supported build tools
 </div>
 </div>
 <div class="paragraph">
-<p>Used as an extension, the goals detailed below will be set up.</p>
+<p>Used as an extension, the goals detailed in this document will be set up.</p>
 </div>
+<div class="sect3">
+<h4 id="_maven_lifecycle"><a class="anchor" href="#_maven_lifecycle"></a>Maven lifecycle</h4>
+<div class="paragraph">
+<p>The Talend Component Kit plugin integrates some specific goals within Maven build lifecycle.
+For example, to compile the project and prepare for deploying your component, run <code>mvn clean install</code>. Using this command, the following goals are executed:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/mvn_clean_install.png" alt="Maven clean install" width="80%"></span></p>
+</div>
+<div class="paragraph">
+<p>The build is split into several phases. The different goals are executed in the order shown above. Talend Component Kit uses many default goals from the Maven build lifecycle and integrates several additional goals in the building and packaging phases.</p>
+</div>
+<div class="paragraph">
+<p>Goals added to the build by Talend Component Kit are detailed below in this document.
+The default lifecycle is detailed in the <a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html">Maven documentation</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_list_of_maven_goals"><a class="anchor" href="#_list_of_maven_goals"></a>List of Maven goals</h4>
 <div class="paragraph">
 <p>You can run the following command from the root of the project, by adapting it with each goal name, parameters and values:</p>
 </div>
@@ -4180,8 +4199,8 @@ A Talend Component Kit plugin is available for each of the supported build tools
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ mvn talend-component:&lt;name_of_the_goal&gt;[:&lt;execution id&gt;] -D&lt;param_user_property&gt;=&lt;param_value&gt;</code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_dependencies"><a class="anchor" href="#_dependencies"></a>Dependencies</h4>
+<div class="sect4">
+<h5 id="_dependencies"><a class="anchor" href="#_dependencies"></a>Dependencies</h5>
 <div class="paragraph">
 <p>The first goal is a shortcut for the <code>maven-dependency-plugin</code>. It creates the <code>TALEND-INF/dependencies.txt</code> file with the <code>compile</code> and <code>runtime</code> dependencies, allowing the component to use it at runtime:</p>
 </div>
@@ -4203,8 +4222,8 @@ A Talend Component Kit plugin is available for each of the supported build tools
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_validating_the_component_programming_model"><a class="anchor" href="#_validating_the_component_programming_model"></a>Validating the component programming model</h4>
+<div class="sect4">
+<h5 id="_validating_the_component_programming_model"><a class="anchor" href="#_validating_the_component_programming_model"></a>Validating the component programming model</h5>
 <div class="paragraph">
 <p>This goal helps you validate the common programming model of the component. To activate it, you can use following execution definition:</p>
 </div>
@@ -4319,8 +4338,8 @@ A Talend Component Kit plugin is available for each of the supported build tools
 </tbody>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_generating_the_component_documentation"><a class="anchor" href="#_generating_the_component_documentation"></a>Generating the component documentation</h4>
+<div class="sect4">
+<h5 id="_generating_the_component_documentation"><a class="anchor" href="#_generating_the_component_documentation"></a>Generating the component documentation</h5>
 <div class="paragraph">
 <p>The <code>asciidoc</code> goal generates an Asciidoc file documenting your component from the configuration model (<code>@Option</code>) and the <code>@Documentation</code> property that you can add to options and to the component itself.</p>
 </div>
@@ -4431,13 +4450,14 @@ A Talend Component Kit plugin is available for each of the supported build tools
 </tr>
 </tbody>
 </table>
-<div class="sect4">
-<h5 id="_rendering_your_documentation"><a class="anchor" href="#_rendering_your_documentation"></a>Rendering your documentation</h5>
+<div class="sect5">
+<h6 id="_rendering_your_documentation"><a class="anchor" href="#_rendering_your_documentation"></a>Rendering your documentation</h6>
 <div class="paragraph">
 <p>To render the generated documentation in HTML or PDF, you can use the Asciidoctor Maven plugin (or Gradle equivalent). You can configure both executions if you want both HTML and PDF renderings.</p>
 </div>
 <div class="paragraph">
 <p>Make sure to execute the rendering after the documentation generation.</p>
+</div>
 </div>
 <div class="sect5">
 <h6 id="_html_rendering"><a class="anchor" href="#_html_rendering"></a>HTML rendering</h6>
@@ -4592,9 +4612,8 @@ include::{generated_doc}/documentation.adoc[]</code></pre>
 </div>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_testing_a_component_web_rendering"><a class="anchor" href="#_testing_a_component_web_rendering"></a>Testing a component web rendering</h4>
+<div class="sect4">
+<h5 id="_testing_a_component_web_rendering"><a class="anchor" href="#_testing_a_component_web_rendering"></a>Testing a component web rendering</h5>
 <div class="paragraph">
 <p>Testing the rendering of your component configuration into the Studio requires deploying the component in Talend Studio. Refer to the <a href="studio.html">Studio documentation</a>.</p>
 </div>
@@ -4638,6 +4657,7 @@ Make sure to install the artifact before using this command because it reads the
 </td>
 </tr>
 </table>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -4742,9 +4762,8 @@ Make sure to install the artifact before using this command because it reads the
 &lt;/plugin&gt;</code></pre>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_generating_the_component_archive"><a class="anchor" href="#_generating_the_component_archive"></a>Generating the component archive</h4>
+<div class="sect4">
+<h5 id="_generating_the_component_archive"><a class="anchor" href="#_generating_the_component_archive"></a>Generating the component archive</h5>
 <div class="paragraph">
 <p>Component ARchive (<code>.car</code>) is the way to bundle a component to share it in the Talend ecosystem. It is a plain Java ARchive (<code>.jar</code>) containing a metadata file and a nested Maven repository containing the component and its depenencies.</p>
 </div>
@@ -4841,8 +4860,8 @@ java -jar mycomponent.car maven-deploy --location /path/to/.m2/repository</code>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_deploying_to_the_studio"><a class="anchor" href="#_deploying_to_the_studio"></a>Deploying to the Studio</h4>
+<div class="sect4">
+<h5 id="_deploying_to_the_studio"><a class="anchor" href="#_deploying_to_the_studio"></a>Deploying to the Studio</h5>
 <div class="paragraph">
 <p>The <code>deploy-in-studio</code> goal deploys the current component module into a local Talend Studio instance.</p>
 </div>
@@ -4880,8 +4899,8 @@ java -jar mycomponent.car maven-deploy --location /path/to/.m2/repository</code>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_help"><a class="anchor" href="#_help"></a>Help</h4>
+<div class="sect4">
+<h5 id="_help"><a class="anchor" href="#_help"></a>Help</h5>
 <div class="paragraph">
 <p>The <code>help</code> goal displays help information on <code>talend-component-maven-plugin</code>.
 Call <code>mvn talend-component:help -Ddetail=true -Dgoal=&lt;goal-name&gt;</code> to display the parameter details of a specific goal.</p>
@@ -4929,6 +4948,7 @@ Call <code>mvn talend-component:help -Ddetail=true -Dgoal=&lt;goal-name&gt;</cod
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="sect3 relatedlinks">
 <h4 id="_related_articles_16"><a class="anchor" href="#_related_articles_16"></a>Related articles</h4>
@@ -16779,7 +16799,7 @@ the configuration is read from system properties, environment variables, &#8230;
 <p>Select your build tool. This tutorial uses Maven, but you can select Gradle instead.</p>
 </li>
 <li>
-<p>Add the <strong>Talend Component Kit Testing</strong> facet to your project to automatically generate unit tests for the components created later in this tutorial.<br></p>
+<p>Add the <strong>Talend Component Kit Testing</strong> facet to your project to automatically generate unit tests for the components created later in this tutorial. Add any facet you need.<br></p>
 <div class="imageblock">
 <div class="content">
 <img src="_images/starter/starter_test_facet.png" alt="Test facet" width="80%">
@@ -19154,7 +19174,7 @@ You can configure the <strong>passthrough</strong> mode globally on your CI serv
 <p>Talend Component Kit provides a migration mechanism between two versions of a component to let you ensure backward compatibility.</p>
 </div>
 <div class="paragraph">
-<p>For example, a new version of a component may have some new options that need to be set with a default value in the older versions or that need to be disabled.</p>
+<p>For example, a new version of a component may have some new options that need to be remapped, set with a default value in the older versions, or disabled.</p>
 </div>
 <div class="paragraph">
 <p>This tutorial shows how to create a migration handler for a component that needs to be upgraded from a version 1 to a version 2. The upgrade to the newer version includes adding new options to the component.</p>
