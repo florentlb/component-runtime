@@ -3,292 +3,272 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talend Component Testing Documentation :: Talend Component Kit Developer Reference Guide</title>
-    <link rel="canonical" href="https://talend.github.io/component-runtime/main/1.0.1/documentation-testing.html">
-    <meta name="generator" content="Antora 1.0.1">
-    <link rel="stylesheet" href="../../_/css/site.css">
-<meta name="date" content="2018-07-23T12:42:57.787Z" scheme="YYYY-MM-DDTHH:mm:ss.sssZ">
+    <title>Talend Component Kit Developer Reference Guide :: Talend Component Testing Documentation</title>
+    <link rel="canonical" href="https://talend.github.io/component-runtime/main/1.1.0/index.html">
+    <meta name="generator" content="Talend Component Kit Generator">
+<meta name="date" content="2018-11-02T10:28:50.843Z" scheme="YYYY-MM-DDTHH:mm:ss.sssZ">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/2.8.0/instantsearch.min.css" integrity="sha256-vusmcqkVvKdkwoueSJZLlO9y2P+Lp9fN3WwQUV9Uwfw=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/2.8.0/instantsearch-theme-algolia.min.css" integrity="sha256-ZqsS4QagZnfArbOyheCO4qVjzzsMbg/WMvf5tLtId/Q=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/idea.min.css" integrity="sha256-rD61BPsgKHzJPyg7vpXaYOw6tMYuY2fz1p9033NYeM8=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@talend/bootstrap-theme@0.200.1/dist/bootstrap.css">
 <link rel="stylesheet" href="../../_/css/talend.css">
-<link rel="shortcut icon" href="../../_/images/favicon_0.ico" />    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PSBN"></script>
+<link rel="shortcut icon" href="../../_/images/favicon_0.ico" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PSBN"></script>
     <script>dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','GTM-PSBN')</script>
   </head>
-  <body class="article">
-<header class="header" role="banner">
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <div class="navbar-item">
-                <a href="https://talend.github.io/component-runtime">Talend Component Kit</a>
-                <span class="separator">//</span>
-                <a href="https://talend.github.io/component-runtime">Docs</a>
-            </div>
-            <button class="navbar-burger" data-target="topbar-nav">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+  <body>
+      <svg xmlns="http://www.w3.org/2000/svg" focusable="false" style="display: none;">
+    <symbol id="talend-logo-square">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <path fill="#FFF" d="M9.694 14.652a1.076 1.076 0 0 1-.715.421 1.086 1.086 0 1 1-.148-2.158c.235 0 .462.075.652.22.23.173.38.427.42.714a1.07 1.07 0 0 1-.209.803M2.15 2.627A1.084 1.084 0 1 1 .418 1.322 1.084 1.084 0 0 1 2.15 2.627m11.383 2.491a2.46 2.46 0 0 0-1.482.494L8.94 1.798a.59.59 0 1 0-.156.125l3.111 3.816a2.486 2.486 0 0 0-.557.718l-8.84-4.062c.065-.19.086-.394.057-.599A1.274 1.274 0 0 0 2.058.95a1.278 1.278 0 0 0-.952-.247 1.286 1.286 0 0 0 .356 2.544 1.279 1.279 0 0 0 .956-.668l8.838 4.06c-.11.264-.176.55-.187.85H3.563a.788.788 0 0 0-.31-.533.799.799 0 0 0-1.113.155.786.786 0 0 0 .156 1.105.799.799 0 0 0 1.267-.527h7.506c.014.323.088.63.215.91l-1.903.941a.592.592 0 1 0 .089.179l1.904-.94c.162.292.382.548.645.753l-2.473 3.404a1.28 1.28 0 0 0-1.742.291 1.288 1.288 0 0 0 .253 1.8 1.28 1.28 0 0 0 .952.246c.34-.048.64-.225.847-.499.207-.274.294-.612.246-.952a1.276 1.276 0 0 0-.399-.763l2.479-3.41a2.468 2.468 0 1 0 1.352-4.53"></path>
+        </svg>
+    </symbol>
+    <symbol id="talend-component-kit-positive">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <g fill="none">
+                <path fill="#005695" d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+                <path fill="#FFF" d="M5.69 10.662a2.3 2.3 0 0 0 1.425.492 2.3 2.3 0 0 0 1.664-.709l-.631-.632 1.005-1.005a.33.33 0 0 0 0-.466.332.332 0 0 0-.467 0L7.68 9.347 6.633 8.3l1.005-1.005a.33.33 0 0 0-.467-.466L6.167 7.832l-.653-.652a2.3 2.3 0 0 0-.71 1.664c0 .54.187 1.037.498 1.43L3.878 11.7a.721.721 0 0 0-.358.027 5.824 5.824 0 0 1-.722-6.368c1.364-2.7 4.612-3.914 7.41-2.777l-.348.69 1.584-.369-.643-1.495-.351.695C7.384.832 3.818 2.15 2.32 5.117a6.359 6.359 0 0 0 .798 6.962.704.704 0 0 0 1.26.631.704.704 0 0 0-.036-.699l1.349-1.349z"></path>
+                <path fill="#FFF" d="M12.623 3.031a.706.706 0 0 0-.973.894l-1.296 1.298a2.304 2.304 0 0 0-3.092.215l3.266 3.265a2.304 2.304 0 0 0 .213-3.092l1.299-1.297a.701.701 0 0 0 .504.006 5.838 5.838 0 0 1 .675 6.311c-1.332 2.636-4.524 3.871-7.284 2.826l.339-.67-1.585.368.643 1.494.36-.712c3.028 1.18 6.538-.162 8.005-3.064a6.375 6.375 0 0 0-.758-6.912.703.703 0 0 0-.316-.93z"></path>
+            </g>
+        </svg>
+    </symbol>
+</svg>
+
+<header class="global-header">
+  <nav class="navbar navbar-default">
+      <div class="navbar-text-content nav navbar-nav">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <button aria-label="Go to Portal" id="header-talend-logo" type="button" class="btn-icon-only btn btn-link">
+            <svg name="talend-logo-square" focusable="false" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#talend-logo-square"></use>
+            </svg>
+        </button>
+        <button aria-label="Kit logo" id="header-kit-logo" type="button" class="btn-icon-only btn btn-link">
+          <svg name="talend-component-kit-positive" focusable="false" aria-hidden="true">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#talend-component-kit-positive"></use>
+          </svg>
+        </button>
+        <a class="navbar-single-link" href="index.html">Talend Component Kit</a>
+        <div class="btn-group navbar-versions">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Version 0.0.1 <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+                <li class="navbar-item version is-latest">
+                    <a href="../1.1.0/index.html">1.1.0</a>
+                </li>
+                <li class="navbar-item version">
+                    <a href="../1.0.4/index.html">1.0.4</a>
+                </li>
+                <li class="navbar-item version">
+                    <a href="../1.0.3/index.html">1.0.3</a>
+                </li>
+                <li class="navbar-item version">
+                    <a href="../1.0.2/index.html">1.0.2</a>
+                </li>
+                <li class="navbar-item version">
+                    <a href="../1.0.1/index.html">1.0.1</a>
+                </li>
+                <li class="navbar-item version">
+                    <a href="../1.0.0/index.html">1.0.0</a>
+                </li>
+                <li class="navbar-item version is-current">
+                    <a href="index.html">0.0.1</a>
+                </li>
+          </ul>
         </div>
-        <div id="topbar-nav" class="navbar-menu">
-            <div class="navbar-end">
-                <div class="global-search">
-                    <form role="search" action="search.html">
-                        <div>
-                            <input class="rounded" type="text" placeholder="Search" name="query" id="searchInput">
-                            <input type="hidden" name="idx" value="githubantora">
-                        </div>
-                    </form>
-                </div>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <div class="navbar-link">Projects</div>
-                    <div class="navbar-dropdown">
-                        <div class="navbar-item"><strong>API</strong></div>
-                        <a class="navbar-item" href="https://github.com/talend/component-api">Repository</a>
-                        <hr class="navbar-divider">
-                        <div class="navbar-item"><strong>Runtime</strong></div>
-                        <a class="navbar-item" href="https://github.com/talend/component-runtime">Repository</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Repositories <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a class="navbar-item" href="https://github.com/talend/component-api" target="_blank">API</a></li>
+              <li><a class="navbar-item" href="https://github.com/talend/component-runtime" target="_blank">Runtime</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Community <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a class="navbar-item" href="contributors.html">Contributors</a></li>
+              <li><a class="navbar-item" href="https://community.talend.com/t5/Component-Development/bd-p/ComponentDevelopment" target="_blank">Forum</a></li>
+              <li><a class="navbar-item" href="https://help.talend.com/" target="_blank">Talend Help Center</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form role="search" action="search.html" class="navbar-form navbar-right">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input class="form-control" type="text" placeholder="Search" name="query" id="searchInput">
+          </div>
+        </form>
+      </div>
     </nav>
 </header>
-<div class="main-wrapper">
-<div class="navigation-container" data-component="main" data-version="0.0.1">
+            <main class="main">
+              <div class="navigation-container grey-background hidden-xs col-sm-2" data-component="main" data-version="0.0.1">
   <aside class="navigation" role="navigation">
     <div class="panels">
-<div class="navigation-menu is-active" data-panel="menu">
-  <nav class="nav-menu">
-    <h3 class="title"><a href="index.html">Talend Component Kit Developer Reference Guide</a></h3>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="0">
-    <button class="nav-toggle"></button>
-    <span class="nav-text">Programming Model</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="component-definition.html">Definition Model</a>
+      <div class="input-group nav-filter-group">
+        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        <input class="form-control" type="text" placeholder="Filter menu entries..." id="navFilterInput">
+      </div>
+      <div class="navigation-menu is-active" data-panel="menu">
+        <nav class="nav-menu">
+          <!-- <label>Talend Component Kit Developer Reference Guide</label> -->
+          <ul class="nav nav-list tree" >
+  <li data-depth="0">
+      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Programming Model</span></label>
+    <ul class="nav nav-list tree" >
+  <li data-depth="1">
+    <a class="menu-link" href="component-definition.html">Definition Model</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="component-configuration.html">Configuration</a>
+  <li data-depth="1">
+    <a class="menu-link" href="component-configuration.html">Configuration</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="component-registering.html">Registration</a>
+  <li data-depth="1">
+    <a class="menu-link" href="component-registering.html">Registration</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="gallery.html">Widget Gallery</a>
+  <li data-depth="1">
+    <a class="menu-link" href="gallery.html">Widget Gallery</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="component-internationalization.html">Labels and i18n</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="0">
-    <button class="nav-toggle"></button>
-    <span class="nav-text">Package</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="component-loading.html">Loading</a>
+  <li data-depth="1">
+    <a class="menu-link" href="component-internationalization.html">Labels and i18n</a>
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="0">
-    <button class="nav-toggle"></button>
-    <span class="nav-text">Build</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="build-tools-maven.html">Maven</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="build-tools-gradle.html">Gradle</a>
+  <li data-depth="0">
+      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Package</span></label>
+    <ul class="nav nav-list tree" >
+  <li data-depth="1">
+    <a class="menu-link" href="component-loading.html">Loading</a>
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="0">
-    <button class="nav-toggle"></button>
-    <span class="nav-text">Services</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="services-internationalization.html">Internationalization</a>
+  <li data-depth="0">
+      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Build</span></label>
+    <ul class="nav nav-list tree" >
+  <li data-depth="1">
+    <a class="menu-link" href="build-tools-maven.html">Maven</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="services-actions.html">Actions</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="services-built-in.html">Built-in services</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="services-interceptors.html">Interceptors</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="services-custom-api.html">Extend the API</a>
+  <li data-depth="1">
+    <a class="menu-link" href="build-tools-gradle.html">Gradle</a>
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="0">
-    <button class="nav-toggle"></button>
-    <span class="nav-text">Execute</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="services-pipeline.html">Simple/Test Pipeline API</a>
+  <li data-depth="0">
+      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Services</span></label>
+    <ul class="nav nav-list tree" >
+  <li data-depth="1">
+    <a class="menu-link" href="services-internationalization.html">Internationalization</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="https://beam.apache.org/documentation/programming-guide/#creating-a-pipeline">Beam Pipeline API</a>
+  <li data-depth="1">
+    <a class="menu-link" href="services-actions.html">Actions</a>
   </li>
-</ul>
+  <li data-depth="1">
+    <a class="menu-link" href="services-built-in.html">Built-in services</a>
   </li>
-  <li class="nav-item" data-depth="0">
-    <button class="nav-toggle"></button>
-    <span class="nav-text">Testing</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="testing-best-practices.html">JUnit Integration</a>
+  <li data-depth="1">
+    <a class="menu-link" href="services-interceptors.html">Interceptors</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="testing-junit.html">Testing HTTP API</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="testing-beam.html">Beam case</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="testing-spark.html">Spark and JUnit</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="testing-multiple-envs.html">Multiple environments for the same tests</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="testing-maven-passwords.html">Secrets/Passwords and Maven</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="testing-generating-data.html">Generating data?</a>
+  <li data-depth="1">
+    <a class="menu-link" href="services-custom-api.html">Extend the API</a>
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="0">
-    <button class="nav-toggle"></button>
-    <span class="nav-text">Web</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="documentation-rest.html">Server</a>
+  <li data-depth="0">
+      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Execute</span></label>
+    <ul class="nav nav-list tree" >
+  <li data-depth="1">
+    <a class="menu-link" href="services-pipeline.html">Simple/Test Pipeline API</a>
+  </li>
+  <li data-depth="1">
+    <a class="menu-link" href="https://beam.apache.org/documentation/programming-guide/#creating-a-pipeline">Beam Pipeline API</a>
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="0">
-    <button class="nav-toggle"></button>
-    <span class="nav-text">Tutorials</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="tutorial-generate-project-using-starter.html">Generate a component</a>
+  <li data-depth="0">
+      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Testing</span></label>
+    <ul class="nav nav-list tree" >
+  <li data-depth="1">
+    <a class="menu-link" href="testing-best-practices.html">JUnit Integration</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="tutorial-create-an-input-component.html">Create an input component</a>
+  <li data-depth="1">
+    <a class="menu-link" href="testing-junit.html">Testing HTTP API</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="tutorial-create-an-output-component.html">Create an output component</a>
+  <li data-depth="1">
+    <a class="menu-link" href="testing-beam.html">Beam case</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="tutorial-test-your-components.html">Test your components</a>
+  <li data-depth="1">
+    <a class="menu-link" href="testing-spark.html">Spark and JUnit</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="tutorial-configuration-sensitive-data.html">Configuration and sensitive data</a>
+  <li data-depth="1">
+    <a class="menu-link" href="testing-multiple-envs.html">Multiple environments for the same tests</a>
+  </li>
+  <li data-depth="1">
+    <a class="menu-link" href="testing-maven-passwords.html">Secrets/Passwords and Maven</a>
+  </li>
+  <li data-depth="1">
+    <a class="menu-link" href="testing-generating-data.html">Generating data?</a>
+  </li>
+</ul>
+  </li>
+  <li data-depth="0">
+      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Web</span></label>
+    <ul class="nav nav-list tree" >
+  <li data-depth="1">
+    <a class="menu-link" href="documentation-rest.html">Server</a>
+  </li>
+</ul>
+  </li>
+  <li data-depth="0">
+      <label class="tree-toggler nav-header"><i class="fa fa-angle-right"></i><span>Tutorials</span></label>
+    <ul class="nav nav-list tree" >
+  <li data-depth="1">
+    <a class="menu-link" href="tutorial-generate-project-using-starter.html">Generate a component</a>
+  </li>
+  <li data-depth="1">
+    <a class="menu-link" href="tutorial-create-an-input-component.html">Create an input component</a>
+  </li>
+  <li data-depth="1">
+    <a class="menu-link" href="tutorial-create-an-output-component.html">Create an output component</a>
+  </li>
+  <li data-depth="1">
+    <a class="menu-link" href="tutorial-test-your-components.html">Test your components</a>
+  </li>
+  <li data-depth="1">
+    <a class="menu-link" href="tutorial-configuration-sensitive-data.html">Configuration and sensitive data</a>
   </li>
 </ul>
   </li>
 </ul>
-  </nav>
-</div>
-<div class="navigation-explore" data-panel="explore">
-  <div class="context">
-    <span class="title">Talend Component Kit Developer Reference Guide</span>
-    <span class="version">0.0.1</span>
-  </div>
-  <ul class="components">
-    <li class="component is-current">
-      <span class="title">Talend Component Kit Developer Reference Guide</span>
-      <ul class="versions">
-        <li class="version is-latest">
-          <a href="../1.0.1/index.html">1.0.1</a>
-        </li>
-        <li class="version">
-          <a href="../1.0.0/index.html">1.0.0</a>
-        </li>
-        <li class="version">
-          <a href="../0.0.12/index.html">0.0.12</a>
-        </li>
-        <li class="version">
-          <a href="../0.0.11/index.html">0.0.11</a>
-        </li>
-        <li class="version">
-          <a href="../0.0.10/index.html">0.0.10</a>
-        </li>
-        <li class="version">
-          <a href="../0.0.9/index.html">0.0.9</a>
-        </li>
-        <li class="version">
-          <a href="../0.0.8/index.html">0.0.8</a>
-        </li>
-        <li class="version">
-          <a href="../0.0.7/index.html">0.0.7</a>
-        </li>
-        <li class="version">
-          <a href="../0.0.6/index.html">0.0.6</a>
-        </li>
-        <li class="version">
-          <a href="../0.0.5/index.html">0.0.5</a>
-        </li>
-        <li class="version">
-          <a href="../0.0.4/index.html">0.0.4</a>
-        </li>
-        <li class="version">
-          <a href="../0.0.3/index.html">0.0.3</a>
-        </li>
-        <li class="version">
-          <a href="../0.0.2/index.html">0.0.2</a>
-        </li>
-        <li class="version is-current">
-          <a href="index.html">0.0.1</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
+        </nav>
+      </div>
     </div>
   </aside>
 </div>
-  <main class="main" role="main">
-<div class="toolbar" role="navigation">
-    <button class="navigation-toggle"></button>
-    <nav class="crumbs" role="navigation" aria-label="breadcrumbs">
-  <ul>
-    <li class="crumb"><a href="index.html">Talend Component Kit Developer Reference Guide</a></li>
-    <li class="crumb"><a href="documentation-testing.html">Talend Component Testing Documentation</a></li>
-  </ul>
-</nav>
-    <div class="page-versions">
-  <button class="versions-menu-toggle" title="Show other versions of page">0.0.1</button>
-  <div class="versions-menu">
-    <a class="version" href="../1.0.1/documentation-testing.html">1.0.1</a>
-    <a class="version" href="../1.0.0/documentation-testing.html">1.0.0</a>
-    <a class="version" href="../0.0.12/documentation-testing.html">0.0.12</a>
-    <a class="version" href="../0.0.11/documentation-testing.html">0.0.11</a>
-    <a class="version" href="../0.0.10/documentation-testing.html">0.0.10</a>
-    <a class="version" href="../0.0.9/documentation-testing.html">0.0.9</a>
-    <a class="version" href="../0.0.8/documentation-testing.html">0.0.8</a>
-    <a class="version" href="../0.0.7/documentation-testing.html">0.0.7</a>
-    <a class="version" href="../0.0.6/documentation-testing.html">0.0.6</a>
-    <a class="version" href="../0.0.5/documentation-testing.html">0.0.5</a>
-    <a class="version" href="../0.0.4/documentation-testing.html">0.0.4</a>
-    <a class="version" href="../0.0.3/documentation-testing.html">0.0.3</a>
-    <a class="version" href="../0.0.2/documentation-testing.html">0.0.2</a>
-    <a class="version is-current" href="documentation-testing.html">0.0.1</a>
-  </div>
+              <div class="col-xs-12 col-sm-10 maincontent">
+                <div class="toolbar" role="navigation">
+
+    <ol class="breadcrumb">
+      <li class="crumb active"><a href="documentation-testing.html">Talend Component Testing Documentation</a></li>
+    </ol>
 </div>
-</div>
-<article class="doc">
-        <h1>Talend Component Testing Documentation</h1>
-        <div class="sect1">
-<h2 id="documentation-testing-start"><a class="anchor" href="#documentation-testing-start"></a>1. Best practises</h2>
+                <article class="doc">
+        <div class="row">
+          <div class="col-sm-9 row">
+              <h1>Talend Component Testing Documentation</h1>
+            <div class="article-content">
+              <div class="sect1">
+<h2 id="documentation-testing-start"><a class="anchor" href="#documentation-testing-start"></a>Best practises</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -304,14 +284,14 @@ as well, check out the documentation if you need to use TestNG.
 </table>
 </div>
 <div class="sect2">
-<h3 id="_parameterized_tests"><a class="anchor" href="#_parameterized_tests"></a>1.1. Parameterized tests</h3>
+<h3 id="_parameterized_tests"><a class="anchor" href="#_parameterized_tests"></a>Parameterized tests</h3>
 <div class="paragraph">
 <p>This is a great solution to repeat the same test multiple times. Overall idea
 is to define a test scenario (<code>I test function F</code>) and to make the input/output data
 dynamic.</p>
 </div>
 <div class="sect3">
-<h4 id="_junit_4"><a class="anchor" href="#_junit_4"></a>1.1.1. JUnit 4</h4>
+<h4 id="_junit_4"><a class="anchor" href="#_junit_4"></a>JUnit 4</h4>
 <div class="paragraph">
 <p>Here is an example. Let&#8217;s assume we have this test which validates the connection URI using <code>ConnectionService</code>:</p>
 </div>
@@ -394,7 +374,7 @@ you don&#8217;t have to define a single <code>@Test</code> method, if you define
 </div>
 </div>
 <div class="sect3">
-<h4 id="_junit_5"><a class="anchor" href="#_junit_5"></a>1.1.2. JUnit 5</h4>
+<h4 id="_junit_5"><a class="anchor" href="#_junit_5"></a>JUnit 5</h4>
 <div class="paragraph">
 <p>JUnit 5 reworked this feature to make it way easier to use. The full documentation is available at <a href="http://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests" class="bare">junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests</a>.</p>
 </div>
@@ -446,10 +426,10 @@ don&#8217;t forget to add <code>junit-jupiter-params</code> dependency to benefi
 </div>
 </div>
 <div class="sect1">
-<h2 id="_component_runtime_testing"><a class="anchor" href="#_component_runtime_testing"></a>2. component-runtime-testing</h2>
+<h2 id="_component_runtime_testing"><a class="anchor" href="#_component_runtime_testing"></a>component-runtime-testing</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_component_runtime_junit"><a class="anchor" href="#_component_runtime_junit"></a>2.1. component-runtime-junit</h3>
+<h3 id="_component_runtime_junit"><a class="anchor" href="#_component_runtime_junit"></a>component-runtime-junit</h3>
 <div class="paragraph">
 <p><code>component-runtime-junit</code> is a small test library allowing you to validate simple logic based on Talend Component tooling.</p>
 </div>
@@ -483,7 +463,7 @@ don&#8217;t forget to add <code>junit-jupiter-params</code> dependency to benefi
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_junit_4_2"><a class="anchor" href="#_junit_4_2"></a>2.1.1. JUnit 4</h4>
+<h4 id="_junit_4_2"><a class="anchor" href="#_junit_4_2"></a>JUnit 4</h4>
 <div class="paragraph">
 <p>Then you can define a standard JUnit test and use the <code>SimpleComponentRule</code> rule:</p>
 </div>
@@ -528,7 +508,7 @@ don&#8217;t forget to add <code>junit-jupiter-params</code> dependency to benefi
 </div>
 </div>
 <div class="sect3">
-<h4 id="_junit_5_2"><a class="anchor" href="#_junit_5_2"></a>2.1.2. JUnit 5</h4>
+<h4 id="_junit_5_2"><a class="anchor" href="#_junit_5_2"></a>JUnit 5</h4>
 <div class="paragraph">
 <p>The JUnit 5 integration is mainly the same as for JUnit 4 except it uses the new JUnit 5 extension mecanism.</p>
 </div>
@@ -588,7 +568,7 @@ Some IDE versions and <code>surefire</code> versions can also need you to instal
 </div>
 </div>
 <div class="sect3">
-<h4 id="_mocking_the_output"><a class="anchor" href="#_mocking_the_output"></a>2.1.3. Mocking the output</h4>
+<h4 id="_mocking_the_output"><a class="anchor" href="#_mocking_the_output"></a>Mocking the output</h4>
 <div class="paragraph">
 <p>Using the component "test"/"collector" as in previous sample stores all records emitted by the chain (typically your source)
 in memory, you can then access them using <code>theSimpleComponentRule.getCollectoedRecord(type)</code>. Note that this method filters by type,
@@ -596,7 +576,7 @@ if you don&#8217;t care of the type just use <code>Object.class</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_mocking_the_input"><a class="anchor" href="#_mocking_the_input"></a>2.1.4. Mocking the input</h4>
+<h4 id="_mocking_the_input"><a class="anchor" href="#_mocking_the_input"></a>Mocking the input</h4>
 <div class="paragraph">
 <p>The input mocking is symmetric to the output but here you provide the data you want to inject:</p>
 </div>
@@ -634,7 +614,7 @@ if you don&#8217;t care of the type just use <code>Object.class</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_creating_runtime_configuration_from_component_configuration"><a class="anchor" href="#_creating_runtime_configuration_from_component_configuration"></a>2.1.5. Creating runtime configuration from component configuration</h4>
+<h4 id="_creating_runtime_configuration_from_component_configuration"><a class="anchor" href="#_creating_runtime_configuration_from_component_configuration"></a>Creating runtime configuration from component configuration</h4>
 <div class="paragraph">
 <p>The component configuration is a POJO (using <code>@Option</code> on fields) and the runtime configuration (<code>ExecutionChainBuilder</code>) uses
 a <code>Map&lt;String, String&gt;</code>. To make the conversion easier, the JUnit integration provides a <code>SimpleFactory.configurationByExample</code> utility
@@ -654,7 +634,7 @@ final Map&lt;String, String&gt; configuration = configurationByExample(component
 </div>
 </div>
 <div class="sect3">
-<h4 id="_testing_a_mapper"><a class="anchor" href="#_testing_a_mapper"></a>2.1.6. Testing a Mapper</h4>
+<h4 id="_testing_a_mapper"><a class="anchor" href="#_testing_a_mapper"></a>Testing a Mapper</h4>
 <div class="paragraph">
 <p>The <code>SimpleComponentRule</code> also allows to test a mapper unitarly, you can get an instance from a configuration
 and you can execute this instance to collect the output. Here is a snippet doing that:</p>
@@ -679,7 +659,7 @@ and you can execute this instance to collect the output. Here is a snippet doing
 </div>
 </div>
 <div class="sect3">
-<h4 id="_testing_a_processor"><a class="anchor" href="#_testing_a_processor"></a>2.1.7. Testing a Processor</h4>
+<h4 id="_testing_a_processor"><a class="anchor" href="#_testing_a_processor"></a>Testing a Processor</h4>
 <div class="paragraph">
 <p>As for the mapper a processor is testable unitary. The case is a bit more complex since you can have multiple
 inputs and outputs:</p>
@@ -737,7 +717,7 @@ you can also implement your own input representation if needed implementing <cod
 </div>
 </div>
 <div class="sect2">
-<h3 id="_component_runtime_testing_spark"><a class="anchor" href="#_component_runtime_testing_spark"></a>2.2. component-runtime-testing-spark</h3>
+<h3 id="_component_runtime_testing_spark"><a class="anchor" href="#_component_runtime_testing_spark"></a>component-runtime-testing-spark</h3>
 <div class="paragraph">
 <p>The folowing artifact will allow you to test against a spark cluster:</p>
 </div>
@@ -752,7 +732,7 @@ you can also implement your own input representation if needed implementing <cod
 </div>
 </div>
 <div class="sect3">
-<h4 id="_junit_4_3"><a class="anchor" href="#_junit_4_3"></a>2.2.1. JUnit 4</h4>
+<h4 id="_junit_4_3"><a class="anchor" href="#_junit_4_3"></a>JUnit 4</h4>
 <div class="paragraph">
 <p>The usage relies on a JUnit <code>TestRule</code>. It is recommanded to use it as a <code>@ClassRule</code> to ensure
 a single instance of a spark cluster is built but you can also use it as a simple <code>@Rule</code> which means
@@ -796,7 +776,7 @@ this is working with <code>@Parameterized</code> so you can submit a bunch of jo
 </div>
 </div>
 <div class="sect3">
-<h4 id="_junit_5_3"><a class="anchor" href="#_junit_5_3"></a>2.2.2. JUnit 5</h4>
+<h4 id="_junit_5_3"><a class="anchor" href="#_junit_5_3"></a>JUnit 5</h4>
 <div class="paragraph">
 <p>The integration with JUnit 5 of that spark cluster logic uses <code>@WithSpark</code> marker for the extension
 and let you, optionally, inject through <code>@SparkInject</code>, the <code>BaseSpark&lt;?&gt;</code> handler to access te spark cluster
@@ -830,7 +810,7 @@ class SparkExtensionTest {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_how_to_know_the_job_is_done"><a class="anchor" href="#_how_to_know_the_job_is_done"></a>2.2.3. How to know the job is done</h4>
+<h4 id="_how_to_know_the_job_is_done"><a class="anchor" href="#_how_to_know_the_job_is_done"></a>How to know the job is done</h4>
 <div class="paragraph">
 <p>In current state, <code>SparkClusterRule</code> doesn&#8217;t allow to know a job execution is done - even if it exposes the webui url so
 you can poll it to check. The best at the moment is to ensure the output of your job exists and contains the right value.</p>
@@ -866,7 +846,7 @@ you can poll it to check. The best at the moment is to ensure the output of your
 </div>
 </div>
 <div class="sect2">
-<h3 id="_component_runtime_http_junit"><a class="anchor" href="#_component_runtime_http_junit"></a>2.3. component-runtime-http-junit</h3>
+<h3 id="_component_runtime_http_junit"><a class="anchor" href="#_component_runtime_http_junit"></a>component-runtime-http-junit</h3>
 <div class="paragraph">
 <p>The HTTP JUnit module allows you to mock REST API very easily. Here are its coordinates:</p>
 </div>
@@ -903,7 +883,7 @@ in most cases - will look in <code>talend/testing/http/&lt;class name&gt;_&lt;me
 in <code>talend/testing/http/&lt;request path&gt;.json</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="_junit_4_4"><a class="anchor" href="#_junit_4_4"></a>2.3.1. JUnit 4</h4>
+<h4 id="_junit_4_4"><a class="anchor" href="#_junit_4_4"></a>JUnit 4</h4>
 <div class="paragraph">
 <p>JUnit 4 setup is done through two rules: <code>JUnit4HttpApi</code> which is responsible to start the server and <code>JUnit4HttpApiPerMethodConfigurator</code>
 which is responsible to configure the server per test and also handle the capture mode (see later).</p>
@@ -963,7 +943,7 @@ public void test() throws Exception {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_junit_5_4"><a class="anchor" href="#_junit_5_4"></a>2.3.2. JUnit 5</h4>
+<h4 id="_junit_5_4"><a class="anchor" href="#_junit_5_4"></a>JUnit 5</h4>
 <div class="paragraph">
 <p>JUnit 5 uses a JUnit 5 extension based on the <code>HttpApi</code> annotation you can put on your test class. You can inject
 the test handler (which has some utilities for advanced cases) through <code>@HttpApiInject</code>:</p>
@@ -1021,7 +1001,7 @@ class MyHttpsApiTest {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_capturing_mode"><a class="anchor" href="#_capturing_mode"></a>2.3.3. Capturing mode</h4>
+<h4 id="_capturing_mode"><a class="anchor" href="#_capturing_mode"></a>Capturing mode</h4>
 <div class="paragraph">
 <p>The strength of this implementation is to run a small proxy server and auto configure the JVM:
 <code>http[s].proxyHost</code>, <code>http[s].proxyPort</code>, <code>HttpsURLConnection#defaultSSLSocketFactory</code> and <code>SSLContext#default</code>
@@ -1068,7 +1048,7 @@ remove the system property. The test will still pass, using <code>google.com</co
 </div>
 </div>
 <div class="sect3">
-<h4 id="_passthrough_mode"><a class="anchor" href="#_passthrough_mode"></a>2.3.4. Passthrough mode</h4>
+<h4 id="_passthrough_mode"><a class="anchor" href="#_passthrough_mode"></a>Passthrough mode</h4>
 <div class="paragraph">
 <p>Setting <code>talend.junit.http.passthrough</code> system property to <code>true</code>, the server will just be a proxy and will execute each request
 to the actual server - like in capturing mode.</p>
@@ -1078,7 +1058,7 @@ to the actual server - like in capturing mode.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_beam_testing"><a class="anchor" href="#_beam_testing"></a>3. Beam testing</h2>
+<h2 id="_beam_testing"><a class="anchor" href="#_beam_testing"></a>Beam testing</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If you want to ensure your component works in Beam the minimum to do is to try with the direct runner (if you don&#8217;t want to use spark).</p>
@@ -1089,7 +1069,7 @@ to the actual server - like in capturing mode.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_multiple_environments_for_the_same_tests"><a class="anchor" href="#_multiple_environments_for_the_same_tests"></a>4. Multiple environments for the same tests</h2>
+<h2 id="_multiple_environments_for_the_same_tests"><a class="anchor" href="#_multiple_environments_for_the_same_tests"></a>Multiple environments for the same tests</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>JUnit (4 or 5) already provides some ways to parameterized tests and execute the same "test logic"
@@ -1107,7 +1087,7 @@ etc&#8230;&#8203;It is a lot of work!</p>
 <p>It is in the junit module and is usable with JUnit 4 and JUnit 5.</p>
 </div>
 <div class="sect2">
-<h3 id="_junit_4_5"><a class="anchor" href="#_junit_4_5"></a>4.1. JUnit 4</h3>
+<h3 id="_junit_4_5"><a class="anchor" href="#_junit_4_5"></a>JUnit 4</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@RunWith(MultiEnvironmentsRunner.class)
@@ -1131,7 +1111,7 @@ to use another runner.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_junit_5_5"><a class="anchor" href="#_junit_5_5"></a>4.2. JUnit 5</h3>
+<h3 id="_junit_5_5"><a class="anchor" href="#_junit_5_5"></a>JUnit 5</h3>
 <div class="paragraph">
 <p>JUnit 5 configuration is close to JUnit 4 one:</p>
 </div>
@@ -1167,7 +1147,7 @@ once for all runners.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_provided_environments"><a class="anchor" href="#_provided_environments"></a>4.3. Provided environments</h3>
+<h3 id="_provided_environments"><a class="anchor" href="#_provided_environments"></a>Provided environments</h3>
 <div class="paragraph">
 <p>The provided environment setup the contextual classloader to load the related runner of Apache Beam.</p>
 </div>
@@ -1224,7 +1204,7 @@ the configuration is read from system properties, environment variables, &#8230;
 </table>
 </div>
 <div class="sect2">
-<h3 id="_configuring_environments"><a class="anchor" href="#_configuring_environments"></a>4.4. Configuring environments</h3>
+<h3 id="_configuring_environments"><a class="anchor" href="#_configuring_environments"></a>Configuring environments</h3>
 <div class="paragraph">
 <p>If the environment extends <code>BaseEnvironmentProvider</code> and therefore defines an environment name - which is the case of the default ones, you can use <code>EnvironmentConfiguration</code>
 to customize the system properties used for that environment:</p>
@@ -1267,7 +1247,7 @@ if you set the system property <code>&lt;environment name&gt;.skip=true</code> t
 </table>
 </div>
 <div class="sect3">
-<h4 id="_advanced_usage"><a class="anchor" href="#_advanced_usage"></a>4.4.1. Advanced usage</h4>
+<h4 id="_advanced_usage"><a class="anchor" href="#_advanced_usage"></a>Advanced usage</h4>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -1357,7 +1337,7 @@ class TheComponentTest {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_secrets_passwords_and_maven"><a class="anchor" href="#_secrets_passwords_and_maven"></a>5. Secrets/Passwords and Maven</h2>
+<h2 id="_secrets_passwords_and_maven"><a class="anchor" href="#_secrets_passwords_and_maven"></a>Secrets/Passwords and Maven</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If you desire you can reuse your Maven <code>settings.xml</code> servers - including the encrypted ones.
@@ -1391,7 +1371,7 @@ to use that feature. See <a href="https://maven.apache.org/guides/mini/guide-enc
 </div>
 </div>
 <div class="sect1">
-<h2 id="_generating_data"><a class="anchor" href="#_generating_data"></a>6. Generating data?</h2>
+<h2 id="_generating_data"><a class="anchor" href="#_generating_data"></a>Generating data?</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Several data generator exists if you want to populate objects with a semantic a bit more evolved than a plain random string
@@ -1464,53 +1444,58 @@ which is pretty good on that topic.</p>
 </div>
 </div>
 </div>
+            </div>
+          </div>
+          <div class="col-sm-3 container article-side-panel">
+            <nav class="article-anchors">
+              <div class="article-side-actions">
+
+                <ul>
+                    <li>
+                      <a class="article-side-actions-link" target="_blank" href="https://github.com/Talend/component-runtime/edit/component-runtime-0.0.1/documentation/src/main/antora/modules/ROOT/pages/documentation-testing.adoc">
+                        <i class="fa fa-edit"></i> &nbsp; &nbsp; Suggest an edit
+                      </a>
+                    </li>
+
+                    <li>
+                                <a class="article-side-actions-link" target="_blank"
+                                   href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Ftalend.github.io%2Fcomponent-runtime%2Fmain%2F1.1.0%2Findex.html&text=Talend%20Component%20Kit%20%3E%3E%20Talend%20Component%20Testing%20Documentation%20%3E%3E%20&tw_p=tweetbutton&url=https%3A%2F%2Ftalend.github.io%2Fcomponent-runtime%2Fmain%2F1.1.0%2Findex.html">
+                                    <i class="fab fa-twitter"></i> &nbsp; &nbsp; Tweet
+                                </a>
+                            </li>
+                            <li>
+                                <a class="article-side-actions-link"
+                                   href="mailto:?subject=Talend%20Component%20Kit%3A%20Talend%20Component%20Testing%20Documentation&body=Talend%20Component%20Kit%3A%20Talend%20Component%20Testing%20Documentation%0A%0Ahttps%3A%2F%2Ftalend.github.io%2Fcomponent-runtime%2Fmain%2F1.1.0%2Findex.html">
+                                    <i class="far fa-envelope"></i> &nbsp; &nbsp; Mail
+                                </a>
+                            </li>
+
+                </ul>
+              </div>
+              <h1 class="article-side-toc">In this article</h1>
+            </nav>
+          </div>
+          <a href="#top" class="top">Scroll to top</a>
+        </div>
+        <script>(window.talend = (window.talend || {})).article = true;</script>
     </article>
-  </main>
-</div>
-<footer class="footer">
+              </div>
+            </main>
+      </main>
+      <footer class="footer ">
     <div class="footer-with-copyright footer-with-links">
-        <ul class="footer-links" style="">
+        <ul class="footer-links pull-left">
             <li><a class="gwt-Anchor" href="http://www.talend.com/">Talend</a></li>
             <li><a class="gwt-Anchor" href="http://www.talend.com/contact">Contact</a></li>
             <li><a class="gwt-Anchor" href="http://www.talend.com/legal-terms/us-eula">Talend EULA</a></li>
         </ul>
-        <div class="footer-copyright" style="">&copy; 2018 Talend Inc. All rights reserved.</div>
+        <div class="footer-copyright pull-right" style="">&copy; 2018 Talend Inc. All rights reserved.</div>
     </div>
 </footer>
-<script src="../../_/js/site.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-<script>
-(function (window, document) {
-  hljs.initHighlighting();
-
-  var closedSize = '50px';
-  document.querySelectorAll('.listingblock')
-    .forEach(function (listingblock, index) {
-      var pre = listingblock.querySelector('div.content > pre.highlightjs.highlight');
-      if (!pre) {return;}
-      var code = pre.querySelector('code.hljs');
-      if (!code) {return;}
-
-      var span = document.createElement('span');
-      var initialBlockClosed = listingblock.className.indexOf('initial-block-closed') >= 0;
-      span.className = 'code-' + (initialBlockClosed ? 'collapsed' : 'open') + '-handle code-handle-base';
-
-      var height = code.style.height;
-      if (initialBlockClosed) {code.style.height = closedSize;}
-
-      span.addEventListener('click', function () {
-        if (span.className == 'code-collapsed-handle code-handle-base') {
-          code.style.height = height;
-          span.className = 'code-open-handle code-handle-base';
-        } else {
-          code.style.height = closedSize;
-          span.className = 'code-collapsed-handle code-handle-base';
-        }
-      }, false);
-
-      pre.prepend(span);
-    });
-})(window, document);
-</script>
+<script src="../../_/../js/anchorific.js"></script>
+<script src="../../_/js/talend.js"></script>
   </body>
 </html>
