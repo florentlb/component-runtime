@@ -70,6 +70,29 @@ class AsciidocDocumentationGeneratorTest {
     }
 
     @Test
+    void generateAdocAdvancedConfig(final TemporaryFolder temporaryFolder, final TestInfo info) throws IOException {
+        final File output = new File(temporaryFolder.getRoot(), info.getTestMethod().get().getName() + ".asciidoc");
+        new AsciidocDocumentationGenerator(
+                new File[] { copyBinaries("org.talend.test.configuration", temporaryFolder.getRoot(),
+                        info.getTestMethod().get().getName()) },
+                output, null, 2, null, null, null, null, log, findWorkDir(), "1.0", Locale.ROOT).run();
+        assertTrue(output.exists());
+        try (final BufferedReader reader = new BufferedReader(new FileReader(output))) {
+            assertEquals("== configurationWithArrayOfObject\n" + "\n" + "=== Configuration\n" + "\n"
+                    + "[cols=\"d,d,m,a,e\",options=\"header\"]\n" + "|===\n"
+                    + "|Display Name|Description|Default Value|Enabled If|Configuration Path\n"
+                    + "|configuration|Aggregate fields.|-|Always enabled|configuration\n"
+                    + "|groupBy|The list of fields used for the aggregation.|1|Always enabled|configuration.groupBy\n"
+                    + "|groupBy[${index}]|groupBy[${index}] configuration|<empty>|Always enabled|configuration.groupBy[${index}]\n"
+                    + "|operations|The list of operation that will be executed.|1|Always enabled|configuration.operations\n"
+                    + "|fieldPath|The source field path.|<empty>|Always enabled|configuration.operations[${index}].fieldPath\n"
+                    + "|operation|The operation to apply.|SUM|Always enabled|configuration.operations[${index}].operation\n"
+                    + "|outputFieldPath|The resulting field name.|<empty>|Always enabled|configuration.operations[${index}].outputFieldPath\n"
+                    + "|===\n", reader.lines().collect(joining("\n")));
+        }
+    }
+
+    @Test
     void generateAdocWithConditions(final TemporaryFolder temporaryFolder, final TestInfo info) throws IOException {
         final File output = new File(temporaryFolder.getRoot(), info.getTestMethod().get().getName() + ".asciidoc");
         new AsciidocDocumentationGenerator(

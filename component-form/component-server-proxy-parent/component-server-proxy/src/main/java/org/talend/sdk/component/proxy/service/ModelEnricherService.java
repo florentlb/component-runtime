@@ -15,10 +15,10 @@
  */
 package org.talend.sdk.component.proxy.service;
 
-import static java.util.Arrays.asList;
 import static java.util.Collections.emptyEnumeration;
 import static java.util.Collections.emptyMap;
 import static java.util.Collections.singleton;
+import static java.util.Collections.singletonList;
 import static java.util.Collections.singletonMap;
 import static java.util.Optional.empty;
 import static java.util.Optional.ofNullable;
@@ -79,67 +79,41 @@ import lombok.extern.slf4j.Slf4j;
 @ApplicationScoped
 public class ModelEnricherService {
 
-    private static final Collection<ActionReference> BUILTIN_ACTIONS =
-            Stream
-                    .of(new ActionReference("builtin::family", "builtin::root::reloadFromId", "reloadForm",
-                            "reloadForm",
+    private static final Collection<ActionReference> BUILTIN_ACTIONS = Stream
+            .of(new ActionReference("builtin::family", "builtin::root::reloadFromId", "reloadForm", "reloadForm",
+                    new ArrayList<>(singleton(
+                            new SimplePropertyDefinition("id", "id", "Configuration Identifier", "STRING", null, null,
+                                    singletonMap("definition::parameter::index", "0"), null, new LinkedHashMap<>())))),
+                    new ActionReference("builtin::family", "builtin::root::reloadFromParentEntityId",
+                            "reloadFromParentEntityId", "reloadFromParentEntityId",
                             new ArrayList<>(singleton(new SimplePropertyDefinition("id", "id",
                                     "Configuration Identifier", "STRING", null, null,
                                     singletonMap("definition::parameter::index", "0"), null, new LinkedHashMap<>())))),
-                            new ActionReference("builtin::family", "builtin::root::reloadFromParentEntityId",
-                                    "reloadFromParentEntityId", "reloadFromParentEntityId",
-                                    new ArrayList<>(singleton(new SimplePropertyDefinition("id", "id",
-                                            "Configuration Identifier", "STRING", null, null,
-                                            singletonMap("definition::parameter::index", "0"), null,
-                                            new LinkedHashMap<>())))),
-                            new ActionReference("builtin::family", "builtin::roots", "dynamic_values", "roots",
-                                    new ArrayList<>()),
-                            // these ones are configured from the definition (xxxx=yyy) and not the form params
-                            new ActionReference("builtin::family", "builtin::http::dynamic_values", "dynamic_values",
-                                    "http", new ArrayList<>()),
-                            new ActionReference("builtin::family", "builtin::references", "suggestions", "references",
-                                    new ArrayList<>()),
-                            new ActionReference("builtin::family", "builtin::childrenTypes", "suggestions",
-                                    "childrenTypes",
-                                    new ArrayList<>(
-                                            singleton(new SimplePropertyDefinition("parentId", "parentId",
-                                                    "Parent identifier", "STRING", null, null,
-                                                    singletonMap("definition::parameter::index", "0"), null,
-                                                    new LinkedHashMap<>())))),
-                            new ActionReference("builtin::family", "builtin::root::reloadFromParentEntityIdAndType",
-                                    "reloadFromParentEntityIdAndType", "reloadFromParentEntityIdAndType",
-                                    new ArrayList<>(singleton(new SimplePropertyDefinition("type", "type", "type",
-                                            "STRING", null, null, singletonMap("definition::parameter::index", "0"),
-                                            null, new LinkedHashMap<>())))),
-                            new ActionReference("builtin::family", "builtin::childrenTypes", "suggestions",
-                                    "childrenTypes",
-                                    new ArrayList<>(
-                                            singleton(new SimplePropertyDefinition("parentId", "parentId",
-                                                    "Parent identifier", "STRING", null, null,
-                                                    singletonMap("definition::parameter::index", "0"), null,
-                                                    new LinkedHashMap<>())))),
-                            new ActionReference("builtin::family", "builtin::root::reloadFromParentEntityIdAndType",
-                                    "reloadFromParentEntityIdAndType", "reloadFromParentEntityIdAndType",
-                                    new ArrayList<>(asList(new SimplePropertyDefinition("id", "id",
-                                            "Configuration Identifier", "STRING", null, null,
-                                            singletonMap("definition::parameter::index", "0"), null,
-                                            new LinkedHashMap<>()),
-                                            new SimplePropertyDefinition("type", "type", "type", "STRING", null, null,
-                                                    singletonMap(
-                                                            "definition::parameter::index", "1"),
-                                                    null, new LinkedHashMap<>())))))
-                    .map(act -> new ActionReference(act.getFamily(), act.getName(), act.getType(), act.getDisplayName(),
-                            Stream
-                                    .concat(act.getProperties().stream(), Stream
-                                            .of(new SimplePropertyDefinition("$formId", "$formId", "$formId", "STRING",
-                                                    null,
-                                                    new PropertyValidation(false, null, null, null, null, null, null,
-                                                            null, null, null),
-                                                    singletonMap("definition::parameter::index",
-                                                            Integer.toString(act.getProperties().size())),
-                                                    null, null)))
-                                    .collect(toList())))
-                    .collect(toList());
+                    new ActionReference("builtin::family", "builtin::roots", "dynamic_values", "roots",
+                            new ArrayList<>()),
+                    // these ones are configured from the definition (xxxx=yyy) and not the form params
+                    new ActionReference("builtin::family", "builtin::http::dynamic_values", "dynamic_values", "http",
+                            new ArrayList<>()),
+                    new ActionReference("builtin::family", "builtin::references", "suggestions", "references",
+                            new ArrayList<>()),
+                    new ActionReference("builtin::family", "builtin::childrenTypes", "suggestions", "childrenTypes",
+                            new ArrayList<>(singleton(new SimplePropertyDefinition("parentId", "parentId",
+                                    "Parent identifier", "STRING", null, null,
+                                    singletonMap("definition::parameter::index", "0"), null, new LinkedHashMap<>())))),
+                    new ActionReference("builtin::family", "builtin::root::reloadFromParentEntityIdAndType",
+                            "reloadFromParentEntityIdAndType", "reloadFromParentEntityIdAndType",
+                            new ArrayList<>(singletonList(new SimplePropertyDefinition("$datasetMetadata",
+                                    "$datasetMetadata", "$datasetMetadata", "OBJECT", null, null,
+                                    singletonMap("definition::parameter::index", "1"), null, new LinkedHashMap<>())))))
+            .map(act -> new ActionReference(act.getFamily(), act.getName(), act.getType(), act.getDisplayName(), Stream
+                    .concat(act.getProperties().stream(), Stream
+                            .of(new SimplePropertyDefinition("$formId", "$formId", "$formId", "STRING", null,
+                                    new PropertyValidation(false, null, null, null, null, null, null, null, null, null),
+                                    singletonMap("definition::parameter::index",
+                                            Integer.toString(act.getProperties().size())),
+                                    null, null)))
+                    .collect(toList())))
+            .collect(toList());
 
     private final Patches skip = new Patches(null) {
 

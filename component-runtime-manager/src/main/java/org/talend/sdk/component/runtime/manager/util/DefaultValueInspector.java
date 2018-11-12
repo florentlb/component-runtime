@@ -15,39 +15,61 @@
  */
 package org.talend.sdk.component.runtime.manager.util;
 
+import static java.util.Collections.singleton;
+import static java.util.Collections.singletonList;
 import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.joining;
+import static lombok.AccessLevel.PRIVATE;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.talend.sdk.component.runtime.manager.ParameterMeta;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 public class DefaultValueInspector {
 
     // for now we use instantiation to find the defaults assuming it will be cached
     // but we can move it later in design module to directly read it from the bytecode
-    public Object createDemoInstance(final Object rootInstance, final ParameterMeta param) {
+    public Instance createDemoInstance(final Object rootInstance, final ParameterMeta param) {
         if (rootInstance != null) {
             final Object field = findField(rootInstance, param);
             if (field != null) {
-                return field;
+                return new Instance(field, false);
             }
         }
 
         final Type javaType = param.getJavaType();
         if (Class.class.isInstance(javaType)) {
-            return tryCreatingObjectInstance(javaType);
+            return new Instance(tryCreatingObjectInstance(javaType), true);
         } else if (ParameterizedType.class.isInstance(javaType)) {
             final ParameterizedType pt = ParameterizedType.class.cast(javaType);
             final Type rawType = pt.getRawType();
             if (Class.class.isInstance(rawType) && Collection.class.isAssignableFrom(Class.class.cast(rawType))
                     && pt.getActualTypeArguments().length == 1
                     && Class.class.isInstance(pt.getActualTypeArguments()[0])) {
-                return tryCreatingObjectInstance(pt.getActualTypeArguments()[0]);
+                final Object instance = tryCreatingObjectInstance(pt.getActualTypeArguments()[0]);
+                final Class<?> collectionType = Class.class.cast(rawType);
+                if (Set.class == collectionType) {
+                    return new Instance(singleton(instance), true);
+                }
+                if (SortedSet.class == collectionType) {
+                    return new Instance(new TreeSet<>(singletonList(instance)), true);
+                }
+                if (List.class == collectionType || Collection.class == collectionType) {
+                    return new Instance(singletonList(instance), true);
+                }
+                // todo?
+                return null;
             }
         }
         return null;
@@ -84,6 +106,9 @@ public class DefaultValueInspector {
         if (param.getPath().startsWith("$") || param.getName().startsWith("$")) { // virtual param
             return null;
         }
+        if (Collection.class.isInstance(rootInstance)) {
+            return findCollectionField(rootInstance, param);
+        }
         Class<?> current = rootInstance.getClass();
         while (current != null) {
             try {
@@ -97,14 +122,19 @@ public class DefaultValueInspector {
             }
             current = current.getSuperclass();
         }
-        if (Collection.class.isInstance(rootInstance)) {
-            final Collection<?> collection = Collection.class.cast(rootInstance);
-            if (!collection.isEmpty()) {
-                return findField(collection.iterator().next(), param);
-            }
-            return null;
-        }
         throw new IllegalArgumentException("Didn't find field '" + param.getName() + "' in " + rootInstance);
+    }
+
+    private Object findCollectionField(final Object rootInstance, final ParameterMeta param) {
+        final Collection<?> collection = Collection.class.cast(rootInstance);
+        if (!collection.isEmpty()) {
+            final Object next = collection.iterator().next();
+            if (param.getPath().endsWith("[${index}]")) {
+                return next;
+            }
+            return findField(next, param);
+        }
+        return null;
     }
 
     private String findName(final ParameterMeta meta) {
@@ -147,5 +177,14 @@ public class DefaultValueInspector {
             // ignore, we'll skip the defaults
         }
         return null;
+    }
+
+    @Data
+    @AllArgsConstructor(access = PRIVATE)
+    public static class Instance {
+
+        private final Object value;
+
+        private final boolean created;
     }
 }

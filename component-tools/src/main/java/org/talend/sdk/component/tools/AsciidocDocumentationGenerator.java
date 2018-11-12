@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Writer;
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Locale;
@@ -184,22 +185,50 @@ public class AsciidocDocumentationGenerator extends BaseTask {
         return parameterMetas.stream().sorted(comparing(ParameterMeta::getPath)).collect(toList());
     }
 
-    private Stream<String> toAsciidocRows(final Collection<ParameterMeta> parameterMetas, final Object parentInstance,
-            final ParameterBundle parentBundle) {
+    private Stream<String> toAsciidocRows(final Collection<ParameterMeta> parameterMetas,
+            final DefaultValueInspector.Instance parentInstance, final ParameterBundle parentBundle) {
         return parameterMetas.stream().flatMap(p -> {
-            final Object instance = defaultValueInspector.createDemoInstance(parentInstance, p);
+            final DefaultValueInspector.Instance instance = defaultValueInspector
+                    .createDemoInstance(
+                            ofNullable(parentInstance).map(DefaultValueInspector.Instance::getValue).orElse(null), p);
             return Stream
                     .concat(Stream.of(toAsciidoctor(p, instance, parentBundle)),
                             toAsciidocRows(p.getNestedParameters(), instance, findBundle(p)));
         });
     }
 
-    private String toAsciidoctor(final ParameterMeta p, final Object instance, final ParameterBundle parent) {
+    private String toAsciidoctor(final ParameterMeta p, final DefaultValueInspector.Instance instance,
+            final ParameterBundle parent) {
         final ParameterBundle bundle = findBundle(p);
         return "|" + bundle.displayName(parent).orElse(p.getName()) + '|'
                 + bundle.documentation(parent).orElseGet(() -> findDocumentation(p)) + '|'
-                + ofNullable(defaultValueInspector.findDefault(instance, p)).orElse("-") + '|'
+                + ofNullable(findDefault(p, instance)).orElse("-") + '|'
                 + renderConditions(p.getPath(), p.getMetadata()) + '|' + p.getPath();
+    }
+
+    private String findDefault(final ParameterMeta p, final DefaultValueInspector.Instance instance) {
+        if (instance == null || instance.getValue() == null || instance.isCreated()) {
+            return null;
+        }
+
+        switch (p.getType()) {
+        case NUMBER:
+        case BOOLEAN:
+        case STRING:
+        case ENUM:
+            return ofNullable(instance.getValue())
+                    .map(String::valueOf)
+                    .map(it -> it.isEmpty() ? "<empty>" : it)
+                    .orElse(null);
+        case ARRAY:
+            return String
+                    .valueOf(Collection.class.isInstance(instance.getValue())
+                            ? Collection.class.cast(instance.getValue()).size()
+                            : Array.getLength(instance.getValue()));
+        case OBJECT:
+        default:
+            return null;
+        }
     }
 
     private String renderConditions(final String path, final Map<String, String> metadata) {
