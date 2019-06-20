@@ -160,7 +160,7 @@ public class MyService {
 }
 ----
 
-NOTE: By default, `*/*+json` are mapped to JSON-P and `*/*+xml` to JAX-B if the model has a `@XmlRootElement` annotation.
+NOTE: By default, `\*/*+json` are mapped to JSON-P and `\*/*+xml` to JAX-B if the model has a `@XmlRootElement` annotation.
 
 === Customizing HTTP client requests
 
